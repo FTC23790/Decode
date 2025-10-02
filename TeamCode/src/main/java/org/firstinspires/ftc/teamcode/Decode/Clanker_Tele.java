@@ -7,14 +7,14 @@ import com.qualcomm.robotcore.hardware.IMU;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.teamcode.Decode.Setup_Subfiles.Driving_System;
-import org.firstinspires.ftc.teamcode.Decode.Setup_Subfiles.Lifting_System;
+//import org.firstinspires.ftc.teamcode.Decode.Setup_Subfiles.Lifting_System;
 import org.firstinspires.ftc.teamcode.Decode.Setup_Subfiles.Scoring_System;
 
 @TeleOp
 public class Clanker_Tele extends OpMode {
     Driving_System DS = new Driving_System();
     // drive system object
-    Lifting_System LS = new Lifting_System();
+    //Lifting_System LS = new Lifting_System();
     //lifting system object
     Scoring_System SS = new Scoring_System();
     // Intake/outtake object
@@ -40,10 +40,10 @@ public class Clanker_Tele extends OpMode {
         imu.initialize(new IMU.Parameters(RevOrientation));
 
         DS.Drive_MotorCal(hardwareMap);
-        LS.Lift_MotorCal(hardwareMap);
+        //LS.Lift_MotorCal(hardwareMap);
         SS.Score_MotorCal(hardwareMap);
         imu.resetYaw();
-        LS.RSTarget(-25);
+        //LS.RSTarget(-25);
         //Initilise HardwareMap setup
     }
 
@@ -76,8 +76,8 @@ public class Clanker_Tele extends OpMode {
         DS.Drive_Running();
         // drive system module
 
-        LS.Lift_Grabber(LB2, RB2);
-        LS.RightLiftSys();
+        //LS.Lift_Grabber(LB2, RB2);
+        //LS.RightLiftSys();
         // lift system module
 
         SS.Scoring_Grabber(X2);
@@ -89,7 +89,7 @@ public class Clanker_Tele extends OpMode {
         telemetry.addData("X Input",LX1);
         telemetry.addData("Y Input",LY1);
         telemetry.addData("R Input",RX1);
-        telemetry.addData("Right Slide", LS.RSPrint());
+        //telemetry.addData("Right Slide", LS.RSPrint());
         //telemetry moduel
 
     }
