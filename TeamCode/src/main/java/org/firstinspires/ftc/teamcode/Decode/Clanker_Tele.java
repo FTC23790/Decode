@@ -29,6 +29,7 @@ public class Clanker_Tele extends OpMode {
     double PowerMod;
     boolean A1;
     boolean X2;
+    boolean B2;
 
     @Override
     public void init() {
@@ -56,6 +57,7 @@ public class Clanker_Tele extends OpMode {
         TR1 = gamepad1.right_trigger;
         A1 = gamepad1.a;
         X2 = gamepad2.x;
+        B2 = gamepad2.b;
         LB2 = gamepad2.left_bumper;
         RB2 = gamepad2.right_bumper;
         // gamepad setting
@@ -80,7 +82,7 @@ public class Clanker_Tele extends OpMode {
         //LS.RightLiftSys();
         // lift system module
 
-        SS.Scoring_Grabber(X2);
+        SS.Scoring_Grabber(X2, B2);
         SS.Scoring_Running();
         // Scoring system module
 
