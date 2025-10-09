@@ -17,7 +17,7 @@ public class Clanker_Odo_Tele extends OpMode {
     GoBildaPinpointDriver odo;
     // makes odo object
     double oldTime = 0;
-
+    // odo bit
     Driving_System DS = new Driving_System();
     // drive system object
     double LX1;
@@ -47,16 +47,13 @@ public class Clanker_Odo_Tele extends OpMode {
         //Initilise HardwareMap setup
 
         odo = hardwareMap.get(GoBildaPinpointDriver.class, "String-Literieral-Odo-name");
-
         odo.setOffsets(0 , 0 , DistanceUnit.CM);
         // need to fix offsets when the ded wheeles get attached
-
         odo.setEncoderResolution(GoBildaPinpointDriver.GoBildaOdometryPods.goBILDA_4_BAR_POD);
-
         odo.setEncoderDirections(GoBildaPinpointDriver.EncoderDirection.REVERSED , GoBildaPinpointDriver.EncoderDirection.REVERSED);
         // x dirention then y dierncton need to be adjsuted when ded wheels get attached
-
         odo.resetPosAndIMU();
+        // odo cal bits
     }
 
     @Override
@@ -88,11 +85,16 @@ public class Clanker_Odo_Tele extends OpMode {
         if (A1 == true) {imu.resetYaw();}
         // direction reset
 
+        if (A1 == true) {odo.resetPosAndIMU();}
+        //odo yaw reset
+
         DS.Drive_Grabber(LX1, LY1, RX1, PowerMod, imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.RADIANS));
         DS.Drive_Running();
         // drive system module
+        // need to feed in odo yaw insted of IMU yaw
 
         odo.update();
+        // self explaitry
 
         double newTime = getRuntime();
         double loopTime = newTime-oldTime;
@@ -105,12 +107,14 @@ public class Clanker_Odo_Tele extends OpMode {
         telemetry.addData("X Input",LX1);
         telemetry.addData("R Input",RX1);
         telemetry.addData("Y Input",LY1);
+        // normal telmetry
         telemetry.addLine();
         telemetry.addLine("Odo bits");
         telemetry.addData("Odo_X", XposCurrent);
         telemetry.addData("Odo_Y", YposCurrent);
         telemetry.addData("Odo_R", RposCurrent);
-        //telemetry moduel
+        // odo telemtery
+            //telemetry moduel
 
     }
 }
