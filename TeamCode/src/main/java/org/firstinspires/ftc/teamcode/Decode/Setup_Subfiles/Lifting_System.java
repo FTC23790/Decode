@@ -31,7 +31,7 @@ public class Lifting_System {
             RS.setMotorSpeed(+1);
             RS.motorMode(DcMotor.RunMode.RUN_USING_ENCODER);
             Lift_Hight = RS.CurrentPos();
-            //exted
+            //extend
         } else if (R_Bump == true) {
             RS.setMotorSpeed(-1);
             RS.motorMode(DcMotor.RunMode.RUN_USING_ENCODER);
