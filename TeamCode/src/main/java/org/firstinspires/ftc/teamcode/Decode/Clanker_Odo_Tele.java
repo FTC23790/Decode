@@ -3,10 +3,8 @@ package org.firstinspires.ftc.teamcode.Decode;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.Pose2D;
 import org.firstinspires.ftc.teamcode.Decode.Setup_Subfiles.ImportedStuffs.NO_TOUCH.GoBildaPinpointDriver;
-import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.IMU;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.teamcode.Decode.Setup_Subfiles.Driving_System;
@@ -25,7 +23,6 @@ public class Clanker_Odo_Tele extends OpMode {
     double RX1;
     double TL1;
     double TR1;
-    IMU imu;
     double PowerMod;
     boolean A1;
 
@@ -35,22 +32,14 @@ public class Clanker_Odo_Tele extends OpMode {
 
     @Override
     public void init() {
-        imu = hardwareMap.get(IMU.class, "imu");
-        RevHubOrientationOnRobot RevOrientation =
-                new RevHubOrientationOnRobot(RevHubOrientationOnRobot.
-                        LogoFacingDirection.LEFT,
-                        RevHubOrientationOnRobot.UsbFacingDirection.UP);
-        imu.initialize(new IMU.Parameters(RevOrientation));
-
         DS.Drive_MotorCal(hardwareMap);
-        imu.resetYaw();
         //Initilise HardwareMap setup
 
-        odo = hardwareMap.get(GoBildaPinpointDriver.class, "String-Literieral-Odo-name");
+        odo = hardwareMap.get(GoBildaPinpointDriver.class, "Clanker_Odo");
         odo.setOffsets(0 , 0 , DistanceUnit.CM);
         // need to fix offsets when the ded wheeles get attached
         odo.setEncoderResolution(GoBildaPinpointDriver.GoBildaOdometryPods.goBILDA_4_BAR_POD);
-        odo.setEncoderDirections(GoBildaPinpointDriver.EncoderDirection.REVERSED , GoBildaPinpointDriver.EncoderDirection.REVERSED);
+        odo.setEncoderDirections(GoBildaPinpointDriver.EncoderDirection.FORWARD , GoBildaPinpointDriver.EncoderDirection.REVERSED);
         // x dirention then y dierncton need to be adjsuted when ded wheels get attached
         odo.resetPosAndIMU();
         // odo cal bits
@@ -60,10 +49,12 @@ public class Clanker_Odo_Tele extends OpMode {
     public void loop() {
 
         Pose2D pos = odo.getPosition();
-        XposCurrent = pos.getX(DistanceUnit.INCH);
-        YposCurrent = pos.getY(DistanceUnit.INCH);
+        XposCurrent = pos.getY(DistanceUnit.INCH);
+        YposCurrent = pos.getX(DistanceUnit.INCH);
         RposCurrent = pos.getHeading(AngleUnit.DEGREES);
         //feeding the odo positions into code varibles
+        // it calls strafe Y and X is frward backard, so calling Y X and X Y
+        // to use X as horoziontal strafe and Y forward Backward
 
         LX1 = +1 * gamepad1.left_stick_x;
         LY1 = -1 * gamepad1.left_stick_y;
@@ -82,16 +73,13 @@ public class Clanker_Odo_Tele extends OpMode {
         }
         //power matrix
 
-        if (A1 == true) {imu.resetYaw();}
-        // direction reset
 
         if (A1 == true) {odo.resetPosAndIMU();}
         //odo yaw reset
 
-        DS.Drive_Grabber(LX1, LY1, RX1, PowerMod, imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.RADIANS));
+        DS.Drive_Grabber(LX1, LY1, RX1, PowerMod, odo.getHeading(AngleUnit.RADIANS) );
         DS.Drive_Running();
         // drive system module
-        // need to feed in odo yaw insted of IMU yaw
 
         odo.update();
         // self explaitry
@@ -105,8 +93,8 @@ public class Clanker_Odo_Tele extends OpMode {
         telemetry.addData("Heading", ( DS.RAPrint() / ( 2 * 3.14159 ) ) * 360 );
         telemetry.addData("Power", PowerMod );
         telemetry.addData("X Input",LX1);
-        telemetry.addData("R Input",RX1);
         telemetry.addData("Y Input",LY1);
+        telemetry.addData("R Input",RX1);
         // normal telmetry
         telemetry.addLine();
         telemetry.addLine("Odo bits");
