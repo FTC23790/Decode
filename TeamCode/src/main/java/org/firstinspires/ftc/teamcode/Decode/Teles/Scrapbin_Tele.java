@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Decode;
+package org.firstinspires.ftc.teamcode.Decode.Teles;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;

@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Decode;
+package org.firstinspires.ftc.teamcode.Decode.Teles;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.Pose2D;
