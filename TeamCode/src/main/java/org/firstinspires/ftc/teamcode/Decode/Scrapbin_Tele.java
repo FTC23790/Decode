@@ -3,7 +3,6 @@ package org.firstinspires.ftc.teamcode.Decode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.teamcode.Decode.Setup_Subfiles.Scrapbin_DriveTrain;
 
 @TeleOp
@@ -16,7 +15,7 @@ public class Scrapbin_Tele extends OpMode {
     double TR1;
     @Override
     public void init() {
-
+        SBDS.Bin_Drive_MotorCal(hardwareMap);
     }
     @Override
     public void loop() {
