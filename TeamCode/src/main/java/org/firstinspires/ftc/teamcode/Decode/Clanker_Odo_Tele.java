@@ -39,7 +39,7 @@ public class Clanker_Odo_Tele extends OpMode {
         odo.setOffsets(0 , 0 , DistanceUnit.CM);
         // need to fix offsets when the ded wheeles get attached
         odo.setEncoderResolution(GoBildaPinpointDriver.GoBildaOdometryPods.goBILDA_4_BAR_POD);
-        odo.setEncoderDirections(GoBildaPinpointDriver.EncoderDirection.FORWARD , GoBildaPinpointDriver.EncoderDirection.REVERSED);
+        odo.setEncoderDirections(GoBildaPinpointDriver.EncoderDirection.REVERSED , GoBildaPinpointDriver.EncoderDirection.FORWARD);
         // x dirention then y dierncton need to be adjsuted when ded wheels get attached
         odo.resetPosAndIMU();
         // odo cal bits
@@ -56,8 +56,8 @@ public class Clanker_Odo_Tele extends OpMode {
         // it calls strafe Y and X is frward backard, so calling Y X and X Y
         // to use X as horoziontal strafe and Y forward Backward
 
-        LX1 = +1 * gamepad1.left_stick_x;
-        LY1 = -1 * gamepad1.left_stick_y;
+        LX1 = -1 * gamepad1.left_stick_x;
+        LY1 = +1 * gamepad1.left_stick_y;
         RX1 = +1 * gamepad1.right_stick_x;
         TL1 = gamepad1.left_trigger;
         TR1 = gamepad1.right_trigger;
@@ -90,13 +90,13 @@ public class Clanker_Odo_Tele extends OpMode {
         oldTime = newTime;
         // odo update module
 
-        telemetry.addData("Heading", ( DS.RAPrint() / ( 2 * 3.14159 ) ) * 360 );
-        telemetry.addData("Power", PowerMod );
-        telemetry.addData("X Input",LX1);
-        telemetry.addData("Y Input",LY1);
-        telemetry.addData("R Input",RX1);
+        //telemetry.addData("Heading", ( DS.RAPrint() / ( 2 * 3.14159 ) ) * 360 );
+        //telemetry.addData("Power", PowerMod );
+        //telemetry.addData("X Input",LX1);
+        //telemetry.addData("Y Input",LY1);
+        //telemetry.addData("R Input",RX1);
         // normal telmetry
-        telemetry.addLine();
+        //telemetry.addLine();
         telemetry.addLine("Odo bits");
         telemetry.addData("Odo_X", XposCurrent);
         telemetry.addData("Odo_Y", YposCurrent);
