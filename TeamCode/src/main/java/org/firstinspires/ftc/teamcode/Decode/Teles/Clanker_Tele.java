@@ -50,8 +50,8 @@ public class Clanker_Tele extends OpMode {
 
     @Override
     public void loop() {
-        LX1 = +1 * gamepad1.left_stick_x;
-        LY1 = -1 * gamepad1.left_stick_y;
+        LX1 = -1 * gamepad1.left_stick_x;
+        LY1 = +1 * gamepad1.left_stick_y;
         RX1 = +1 * gamepad1.right_stick_x;
         TL1 = gamepad1.left_trigger;
         TR1 = gamepad1.right_trigger;
