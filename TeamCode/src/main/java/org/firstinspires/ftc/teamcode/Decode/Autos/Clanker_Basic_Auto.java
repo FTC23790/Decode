@@ -53,6 +53,8 @@ public class Clanker_Basic_Auto extends OpMode {
         telemetry.addData("Odo_R", RposCurrent);
 
         if (YposCurrent >= 10) {
+            // it says stop at 10 inches, but it has 10 inches of stoping distance so
+            // it actuly stops after  20 inches
             DS.Stop();
         } else {
             DS.Move_Forward();
