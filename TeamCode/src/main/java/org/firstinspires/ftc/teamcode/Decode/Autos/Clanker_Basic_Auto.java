@@ -52,7 +52,7 @@ public class Clanker_Basic_Auto extends OpMode {
         telemetry.addData("Odo_Y", YposCurrent);
         telemetry.addData("Odo_R", RposCurrent);
 
-        if (YposCurrent >= 24) {
+        if (YposCurrent >= 10) {
             DS.Stop();
         } else {
             DS.Move_Forward();
