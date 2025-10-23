@@ -37,10 +37,9 @@ public class Clanker_Odo_Tele extends OpMode {
 
         odo = hardwareMap.get(GoBildaPinpointDriver.class, "Clanker_Odo");
         odo.setOffsets(0 , 0 , DistanceUnit.CM);
-        // need to fix offsets when the ded wheeles get attached
         odo.setEncoderResolution(GoBildaPinpointDriver.GoBildaOdometryPods.goBILDA_4_BAR_POD);
         odo.setEncoderDirections(GoBildaPinpointDriver.EncoderDirection.REVERSED , GoBildaPinpointDriver.EncoderDirection.FORWARD);
-        // x dirention then y dierncton need to be adjsuted when ded wheels get attached
+        // x dirention then y dierncton
         odo.resetPosAndIMU();
         // odo cal bits
     }

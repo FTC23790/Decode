@@ -104,4 +104,35 @@ public class Driving_System {
     public double RAPrint () {
         return robotAngle;
     }
+
+    public void Move_Forward () {
+        CH0FR.setMotorSpeed(+1);
+        CH1BR.setMotorSpeed(+1);
+        EH0FL.setMotorSpeed(+1);
+        EH1BL.setMotorSpeed(+1);
+    }
+    public void Move_Backward () {
+        CH0FR.setMotorSpeed(-1);
+        CH1BR.setMotorSpeed(-1);
+        EH0FL.setMotorSpeed(-1);
+        EH1BL.setMotorSpeed(-1);
+    }
+    public void Move_Left () {
+        CH0FR.setMotorSpeed(+1);
+        CH1BR.setMotorSpeed(-1);
+        EH0FL.setMotorSpeed(-1);
+        EH1BL.setMotorSpeed(+1);
+    }
+    public void Move_Right () {
+        CH0FR.setMotorSpeed(-1);
+        CH1BR.setMotorSpeed(+1);
+        EH0FL.setMotorSpeed(+1);
+        EH1BL.setMotorSpeed(-1);
+    }
+    public void Stop () {
+        CH0FR.setMotorSpeed(0);
+        CH1BR.setMotorSpeed(0);
+        EH0FL.setMotorSpeed(0);
+        EH1BL.setMotorSpeed(0);
+    }
 }
