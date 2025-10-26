@@ -28,7 +28,7 @@ public class Clanker_Tele extends OpMode {
     boolean A1;
     boolean X2;
     boolean B2;
-    int OutTake_RPM;
+    double OutTake_RPM;
 
     @Override
     public void init() {
@@ -42,7 +42,6 @@ public class Clanker_Tele extends OpMode {
         DS.Drive_MotorCal(hardwareMap);
         SS.Score_MotorCal(hardwareMap);
         imu.resetYaw();
-        //LS.RSTarget(-25);
         //Initilise HardwareMap setup
     }
 
@@ -70,11 +69,11 @@ public class Clanker_Tele extends OpMode {
         //power matrix
 
         if ( 0.2 < TL2 ) {
-            OutTake_RPM = 6000;
+            OutTake_RPM = 1;
         } else if (0.2 < TR2) {
-            OutTake_RPM = 3000;
+            OutTake_RPM = 0.5;
         } else {
-            OutTake_RPM = 4500;
+            OutTake_RPM = 0.75;
         }
         // outtake speed matrix
 
@@ -96,7 +95,9 @@ public class Clanker_Tele extends OpMode {
         telemetry.addData("R Input",RX1);
         //telemetry.addData("Right Slide", LS.RSPrint());
         telemetry.addLine();
-        telemetry.addData("Out Take RPM", OutTake_RPM);
+        telemetry.addData("Out Take RPM", (OutTake_RPM * 6000));
+        //telemetry.addData("button", B2);
+        //telemetry.addData("outcurrent", SS.Out_Return());
         //telemetry moduel
 
     }

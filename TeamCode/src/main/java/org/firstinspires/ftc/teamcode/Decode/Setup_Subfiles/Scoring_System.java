@@ -12,7 +12,7 @@ public class Scoring_System {
     private boolean OutTake_Button;
     private double Left_Bump;
     private double Right_Bump;
-    private int Outtake_RPM;
+    private double Outtake_RPM;
     public void Score_MotorCal (HardwareMap hardwareMap) {
         CH2IN.init(hardwareMap, "CH2Intake");
         EH2OUT.init(hardwareMap, "EH2OutTake");
@@ -21,7 +21,7 @@ public class Scoring_System {
         // setup
     }
 
-    public void Scoring_Grabber (boolean Inbutton, boolean Outbutton, int OutRPM) {
+    public void Scoring_Grabber (boolean Inbutton, boolean Outbutton, double OutRPM) {
         InTake_Button = Inbutton;
         OutTake_Button = Outbutton;
         Outtake_RPM = OutRPM;
@@ -34,9 +34,13 @@ public class Scoring_System {
             CH2IN.setMotorSpeed(0);
         }
         if (OutTake_Button == true) {
-            EH2OUT.setMotorSpeed(Outtake_RPM / 6000);
+            EH2OUT.setMotorSpeed(Outtake_RPM);
         } else {
             EH2OUT.setMotorSpeed(0);
         }
     }
+    public int Out_Return () {
+        return EH2OUT.CurrentPos();
+    }
+
 }

@@ -18,4 +18,7 @@ public class Drive_Motor_Setup {
     public void setDirection(DcMotorSimple.Direction direction){
         motor.setDirection(direction);
     }
+    public int CurrentPos(){
+        return motor.getCurrentPosition();
+    }
 }
