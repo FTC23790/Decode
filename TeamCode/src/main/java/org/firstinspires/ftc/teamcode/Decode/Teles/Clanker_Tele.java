@@ -14,8 +14,6 @@ import org.firstinspires.ftc.teamcode.Decode.Setup_Subfiles.Scoring_System;
 public class Clanker_Tele extends OpMode {
     Driving_System DS = new Driving_System();
     // drive system object
-    //Lifting_System LS = new Lifting_System();
-    //lifting system object
     Scoring_System SS = new Scoring_System();
     // Intake/outtake object
     double LX1;
@@ -23,13 +21,14 @@ public class Clanker_Tele extends OpMode {
     double RX1;
     double TL1;
     double TR1;
-    boolean LB2;
-    boolean RB2;
+    double TL2;
+    double TR2;
     IMU imu;
     double PowerMod;
     boolean A1;
     boolean X2;
     boolean B2;
+    int OutTake_RPM;
 
     @Override
     public void init() {
@@ -41,7 +40,6 @@ public class Clanker_Tele extends OpMode {
         imu.initialize(new IMU.Parameters(RevOrientation));
 
         DS.Drive_MotorCal(hardwareMap);
-        //LS.Lift_MotorCal(hardwareMap);
         SS.Score_MotorCal(hardwareMap);
         imu.resetYaw();
         //LS.RSTarget(-25);
@@ -55,11 +53,11 @@ public class Clanker_Tele extends OpMode {
         RX1 = +1 * gamepad1.right_stick_x;
         TL1 = gamepad1.left_trigger;
         TR1 = gamepad1.right_trigger;
+        TL2 = gamepad2.left_trigger;
+        TR2 = gamepad2.right_trigger;
         A1 = gamepad1.a;
         X2 = gamepad2.x;
         B2 = gamepad2.b;
-        LB2 = gamepad2.left_bumper;
-        RB2 = gamepad2.right_bumper;
         // gamepad setting
 
         if ( 0.2 < TL1 ) {
@@ -71,6 +69,15 @@ public class Clanker_Tele extends OpMode {
         }
         //power matrix
 
+        if ( 0.2 < TL2 ) {
+            OutTake_RPM = 6000;
+        } else if (0.2 < TR2) {
+            OutTake_RPM = 3000;
+        } else {
+            OutTake_RPM = 4500;
+        }
+        // outtake speed matrix
+
         if (A1 == true) {imu.resetYaw();}
         // direction reset
 
@@ -78,11 +85,7 @@ public class Clanker_Tele extends OpMode {
         DS.Drive_Running();
         // drive system module
 
-        //LS.Lift_Grabber(LB2, RB2);
-        //LS.RightLiftSys();
-        // lift system module
-
-        SS.Scoring_Grabber(X2, B2);
+        SS.Scoring_Grabber(X2, B2, OutTake_RPM);
         SS.Scoring_Running();
         // Scoring system module
 
@@ -92,6 +95,8 @@ public class Clanker_Tele extends OpMode {
         telemetry.addData("Y Input",LY1);
         telemetry.addData("R Input",RX1);
         //telemetry.addData("Right Slide", LS.RSPrint());
+        telemetry.addLine();
+        telemetry.addData("Out Take RPM", OutTake_RPM);
         //telemetry moduel
 
     }
