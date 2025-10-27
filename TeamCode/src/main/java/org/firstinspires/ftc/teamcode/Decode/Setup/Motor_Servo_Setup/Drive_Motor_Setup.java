@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Decode.Setup_Subfiles.Motor_Servo_Setup;
+package org.firstinspires.ftc.teamcode.Decode.Setup.Motor_Servo_Setup;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;

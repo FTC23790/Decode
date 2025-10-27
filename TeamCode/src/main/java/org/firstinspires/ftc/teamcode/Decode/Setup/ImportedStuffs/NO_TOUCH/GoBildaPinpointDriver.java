@@ -20,7 +20,7 @@
  *   SOFTWARE.
  */
 
-package org.firstinspires.ftc.teamcode.Decode.Setup_Subfiles.ImportedStuffs.NO_TOUCH;
+package org.firstinspires.ftc.teamcode.Decode.Setup.ImportedStuffs.NO_TOUCH;
 
 import static com.qualcomm.robotcore.util.TypeConversion.byteArrayToInt;
 

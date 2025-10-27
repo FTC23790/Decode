@@ -2,13 +2,13 @@ package org.firstinspires.ftc.teamcode.Decode.Teles;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.Pose2D;
-import org.firstinspires.ftc.teamcode.Decode.Setup_Subfiles.ImportedStuffs.NO_TOUCH.GoBildaPinpointDriver;
+import org.firstinspires.ftc.teamcode.Decode.Setup.ImportedStuffs.NO_TOUCH.GoBildaPinpointDriver;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
-import org.firstinspires.ftc.teamcode.Decode.Setup_Subfiles.Driving_System;
-import org.firstinspires.ftc.teamcode.Decode.Setup_Subfiles.Scoring_System;
+import org.firstinspires.ftc.teamcode.Decode.SubSystems.Driving_System;
+import org.firstinspires.ftc.teamcode.Decode.SubSystems.Scoring_System;
 
 @TeleOp
 public class Clanker_Odo_Tele extends OpMode {

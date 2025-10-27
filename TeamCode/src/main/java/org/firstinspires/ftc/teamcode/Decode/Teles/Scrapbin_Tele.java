@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode.Decode.Teles;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.Decode.Setup_Subfiles.Scrapbin_DriveTrain;
+import org.firstinspires.ftc.teamcode.Decode.SubSystems.Scrapbin_DriveTrain;
 
 @TeleOp
 public class Scrapbin_Tele extends OpMode {

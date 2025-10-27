@@ -1,10 +1,10 @@
-package org.firstinspires.ftc.teamcode.Decode.Setup_Subfiles;
+package org.firstinspires.ftc.teamcode.Decode.SubSystems;
 
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
-import org.firstinspires.ftc.teamcode.Decode.Setup_Subfiles.Motor_Servo_Setup.Drive_Motor_Setup;
+import org.firstinspires.ftc.teamcode.Decode.Setup.Motor_Servo_Setup.Drive_Motor_Setup;
 
 
 

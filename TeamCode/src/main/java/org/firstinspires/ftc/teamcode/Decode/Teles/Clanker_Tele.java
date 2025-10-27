@@ -6,9 +6,9 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.IMU;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
-import org.firstinspires.ftc.teamcode.Decode.Setup_Subfiles.Driving_System;
+import org.firstinspires.ftc.teamcode.Decode.SubSystems.Driving_System;
 //import org.firstinspires.ftc.teamcode.Decode.Setup_Subfiles.Lifting_System;
-import org.firstinspires.ftc.teamcode.Decode.Setup_Subfiles.Scoring_System;
+import org.firstinspires.ftc.teamcode.Decode.SubSystems.Scoring_System;
 
 @TeleOp
 public class Clanker_Tele extends OpMode {
