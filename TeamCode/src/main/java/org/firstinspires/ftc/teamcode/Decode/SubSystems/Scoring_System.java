@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.Decode.SubSystems;
 
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.CRServo;
 
 import org.firstinspires.ftc.teamcode.Decode.Setup.Motor_Servo_Setup.Drive_Motor_Setup;
 public class Scoring_System {
@@ -10,6 +11,7 @@ public class Scoring_System {
     Drive_Motor_Setup EH2OUT = new Drive_Motor_Setup();
     private boolean InTake_Button;
     private boolean OutTake_Button;
+    private boolean Pusher_Button; // LINE ADDED BY NICK FOR TESTING
     private double Left_Bump;
     private double Right_Bump;
     private double Outtake_RPM;
@@ -42,5 +44,20 @@ public class Scoring_System {
     public int Out_Return () {
         return EH2OUT.CurrentPos();
     }
+
+    // BLOCK ADDED BY NICK FOR TESTING
+    CRServo PusherServo;
+    public void Servo_Init_TEMPORARY(HardwareMap hwmap) {
+        PusherServo = hwmap.get(CRServo.class, "ball pusher");
+        PusherServo.setDirection(DcMotorSimple.Direction.FORWARD);
+    }
+    public void Servo_Testing_TEMPORARY(boolean servoButton) {
+        if (servoButton == true) {
+            PusherServo.setPower(1);
+        } else {
+            PusherServo.setPower(0);
+        }
+    }
+    // BLOCK ADDED BY NICK FOR TESTING
 
 }

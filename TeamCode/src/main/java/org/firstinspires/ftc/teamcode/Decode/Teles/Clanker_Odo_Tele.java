@@ -30,6 +30,7 @@ public class Clanker_Odo_Tele extends OpMode {
     boolean A1;
     boolean X2;
     boolean B2;
+    boolean UP2; // LINE ADDED BY NICK FOR TESTING
     double TL2;
     double TR2;
     int OutTake_RPM;
@@ -42,6 +43,7 @@ public class Clanker_Odo_Tele extends OpMode {
     public void init() {
         DS.Drive_MotorCal(hardwareMap);
         SS.Score_MotorCal(hardwareMap);
+        SS.Servo_Init_TEMPORARY(hardwareMap); // LINE ADDED BY NICK FOR TESTING
         //Initilise HardwareMap setup
 
         odo = hardwareMap.get(GoBildaPinpointDriver.class, "Clanker_Odo");
@@ -74,6 +76,7 @@ public class Clanker_Odo_Tele extends OpMode {
         A1 = gamepad1.a;
         X2 = gamepad2.x;
         B2 = gamepad2.b;
+        UP2 = gamepad2.dpad_up; // LINE ADDED BY NICK FOR TESTING
         // gamepad setting
 
         if ( 0.2 < TL1 ) {
@@ -104,6 +107,8 @@ public class Clanker_Odo_Tele extends OpMode {
 
         SS.Scoring_Grabber(X2, B2, OutTake_RPM);
         SS.Scoring_Running();
+        SS.Servo_Testing_TEMPORARY(UP2); // LINE ADDED BY NICK FOR TESTING
+
         // Scoring system module
 
         odo.update();
