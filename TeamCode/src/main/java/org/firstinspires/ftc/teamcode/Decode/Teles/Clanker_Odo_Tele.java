@@ -78,7 +78,8 @@ public class Clanker_Odo_Tele extends OpMode {
         A1 = gamepad1.a;
         X2 = gamepad2.x;
         B2 = gamepad2.b;
-        UP2 = gamepad2.dpad_up; // LINE ADDED BY NICK FOR TESTING
+        UP2 = gamepad2.dpad_up;
+        DD2 = gamepad2.dpad_down;
         // gamepad setting
 
         if ( 0.2 < TL1 ) {
@@ -118,7 +119,6 @@ public class Clanker_Odo_Tele extends OpMode {
 
         SS.Scoring_Grabber(X2, B2, OutTake_RPM, PassThrough);
         SS.Scoring_Running();
-
         // Scoring system module
 
         odo.update();
