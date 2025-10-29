@@ -33,6 +33,9 @@ public class Clanker_Odo_Tele extends OpMode {
     boolean UP2; // LINE ADDED BY NICK FOR TESTING
     double TL2;
     double TR2;
+    boolean DU2;
+    boolean DD2;
+    double PassThrough;
     int OutTake_RPM;
 
     double XposCurrent;
@@ -43,7 +46,6 @@ public class Clanker_Odo_Tele extends OpMode {
     public void init() {
         DS.Drive_MotorCal(hardwareMap);
         SS.Score_MotorCal(hardwareMap);
-        SS.Servo_Init_TEMPORARY(hardwareMap); // LINE ADDED BY NICK FOR TESTING
         //Initilise HardwareMap setup
 
         odo = hardwareMap.get(GoBildaPinpointDriver.class, "Clanker_Odo");
@@ -97,6 +99,15 @@ public class Clanker_Odo_Tele extends OpMode {
         }
         // outtake speed matrix
 
+        if (DU2 == true) {
+            PassThrough = 1;
+        } else if (DD2 == true) {
+            PassThrough = -1;
+        } else {
+            PassThrough = 0;
+        }
+        // passthrough direction matrix
+
 
         if (A1 == true) {odo.resetPosAndIMU();}
         //odo yaw reset
@@ -105,9 +116,8 @@ public class Clanker_Odo_Tele extends OpMode {
         DS.Drive_Running();
         // drive system module
 
-        SS.Scoring_Grabber(X2, B2, OutTake_RPM);
+        SS.Scoring_Grabber(X2, B2, OutTake_RPM, PassThrough);
         SS.Scoring_Running();
-        SS.Servo_Testing_TEMPORARY(UP2); // LINE ADDED BY NICK FOR TESTING
 
         // Scoring system module
 
