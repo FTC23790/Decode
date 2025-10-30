@@ -10,6 +10,7 @@ public class Scoring_System {
     Drive_Motor_Setup CH2IN = new Drive_Motor_Setup();
     Drive_Motor_Setup EH2OUT = new Drive_Motor_Setup();
     Servo_Setup EH1S = new Servo_Setup();
+    Servo_Setup CH0S = new Servo_Setup();
     private double InTake;
     private boolean OutTake_Button;
     private double PassThrough;
@@ -17,7 +18,8 @@ public class Scoring_System {
     public void Score_MotorCal (HardwareMap hardwareMap) {
         CH2IN.init(hardwareMap, "CH2Intake");
         EH2OUT.init(hardwareMap, "EH2OutTake");
-        EH1S.init(hardwareMap, "ball pusher");
+        EH1S.init(hardwareMap, "RBP");
+        CH0S.init(hardwareMap, "LBP");
         CH2IN.setDirection(DcMotorSimple.Direction.FORWARD);
         EH2OUT.setDirection(DcMotorSimple.Direction.REVERSE);
         EH1S.setDirection(DcMotorSimple.Direction.FORWARD);
@@ -39,6 +41,7 @@ public class Scoring_System {
         }
         CH2IN.setMotorSpeed(InTake);
         EH1S.setPower(PassThrough);
+        CH0S.setPower(PassThrough);
     }
     public int Out_Return () {
         return EH2OUT.CurrentPos();
