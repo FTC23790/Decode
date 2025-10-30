@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.Decode.Teles;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.Pose2D;
 import org.firstinspires.ftc.teamcode.Decode.Setup.ImportedStuffs.NO_TOUCH.GoBildaPinpointDriver;
+import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
@@ -21,6 +22,7 @@ public class Clanker_Odo_Tele extends OpMode {
     // drive system object
     Scoring_System SS = new Scoring_System();
     // Intake/outtake object
+    TelemetryPacket Tele = new TelemetryPacket();
     double LX1;
     double LY1;
     double RX1;
@@ -143,7 +145,6 @@ public class Clanker_Odo_Tele extends OpMode {
         // odo update module
 
         //telemetry.addData("Heading", ( DS.RAPrint() / ( 2 * 3.14159 ) ) * 360 );
-        telemetry.addData("Power", PowerMod );
         //telemetry.addData("X Input",LX1);
         //telemetry.addData("Y Input",LY1);
         //telemetry.addData("R Input",RX1);
@@ -156,6 +157,11 @@ public class Clanker_Odo_Tele extends OpMode {
         telemetry.addData("Power", PowerMod );
         telemetry.addData("Out Take RPM", OutTake_RPM);
         // odo telemtery
+        telemetry.addLine();
+        Tele.put("X", XposCurrent);
+        Tele.put("Y", YposCurrent);
+        Tele.put("R", RposCurrent);
+        // FTC Dashboard text test
             //telemetry moduel
 
     }
