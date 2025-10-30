@@ -50,7 +50,7 @@ public class Clanker_Odo_Tele extends OpMode {
         SS.Score_MotorCal(hardwareMap);
         //Initilise HardwareMap setup
 
-        odo = hardwareMap.get(GoBildaPinpointDriver.class, "Clanker_Odo");
+        odo = hardwareMap.get(GoBildaPinpointDriver.class, "pinpoint");
         odo.setOffsets(0 , 0 , DistanceUnit.CM);
         odo.setEncoderResolution(GoBildaPinpointDriver.GoBildaOdometryPods.goBILDA_4_BAR_POD);
         odo.setEncoderDirections(GoBildaPinpointDriver.EncoderDirection.REVERSED , GoBildaPinpointDriver.EncoderDirection.FORWARD);

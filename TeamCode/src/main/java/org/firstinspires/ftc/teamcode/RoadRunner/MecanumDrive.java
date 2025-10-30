@@ -253,7 +253,7 @@ public final class MecanumDrive {
 
         // filled in the right side of the equation as defined
         // by the documatation for a pinpoint driver localizer
-        // The code expects a Pinpoint device to be configured with name "pinpoint"
+        // DONE: The code expects a Pinpoint device to be configured with name "pinpoint"
         localizer = new PinpointLocalizer(hardwareMap, PARAMS.inPerTick, pose);
 
          FlightRecorder.write("MECANUM_PARAMS", PARAMS);
