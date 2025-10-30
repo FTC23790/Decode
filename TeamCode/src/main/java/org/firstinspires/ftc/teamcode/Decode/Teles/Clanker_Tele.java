@@ -27,11 +27,13 @@ public class Clanker_Tele extends OpMode {
     double PowerMod;
     boolean A1;
     boolean X2;
+    boolean A2;
     boolean B2;
     boolean DU2;
     boolean DD2;
     double OutTake_RPM;
     double PassThrough;
+    double Intake;
 
     @Override
     public void init() {
@@ -59,6 +61,7 @@ public class Clanker_Tele extends OpMode {
         TR2 = gamepad2.right_trigger;
         A1 = gamepad1.a;
         X2 = gamepad2.x;
+        A2 = gamepad2.a;
         B2 = gamepad2.b;
         DU2 = gamepad2.dpad_up;
         DD2 = gamepad2.dpad_down;
@@ -91,6 +94,15 @@ public class Clanker_Tele extends OpMode {
         }
         // passthrough direction matrix
 
+        if (X2 == true) {
+            Intake = 1;
+        } else if (B2 == true) {
+            Intake = -1;
+        } else {
+            Intake = 0;
+        }
+        // Intake direction matrix
+
         if (A1 == true) {imu.resetYaw();}
         // direction reset
 
@@ -98,7 +110,7 @@ public class Clanker_Tele extends OpMode {
         DS.Drive_Running();
         // drive system module
 
-        SS.Scoring_Grabber(X2, B2, OutTake_RPM, PassThrough);
+        SS.Scoring_Grabber(Intake, A2, OutTake_RPM, PassThrough);
         SS.Scoring_Running();
         // Scoring system module
 

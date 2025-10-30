@@ -28,6 +28,7 @@ public class Clanker_Odo_Tele extends OpMode {
     double TR1;
     double PowerMod;
     boolean A1;
+    boolean A2;
     boolean X2;
     boolean B2;
     boolean UP2; // LINE ADDED BY NICK FOR TESTING
@@ -37,6 +38,7 @@ public class Clanker_Odo_Tele extends OpMode {
     boolean DD2;
     double PassThrough;
     int OutTake_RPM;
+    double Intake;
 
     double XposCurrent;
     double YposCurrent;
@@ -76,6 +78,7 @@ public class Clanker_Odo_Tele extends OpMode {
         TL2 = gamepad2.left_trigger;
         TR2 = gamepad2.right_trigger;
         A1 = gamepad1.a;
+        A2 = gamepad2.a;
         X2 = gamepad2.x;
         B2 = gamepad2.b;
         UP2 = gamepad2.dpad_up;
@@ -109,6 +112,15 @@ public class Clanker_Odo_Tele extends OpMode {
         }
         // passthrough direction matrix
 
+        if (X2 == true) {
+            Intake = 1;
+        } else if (B2 == true) {
+            Intake = -1;
+        } else {
+            Intake = 0;
+        }
+        // Intake direction matrix
+
 
         if (A1 == true) {odo.resetPosAndIMU();}
         //odo yaw reset
@@ -117,7 +129,7 @@ public class Clanker_Odo_Tele extends OpMode {
         DS.Drive_Running();
         // drive system module
 
-        SS.Scoring_Grabber(X2, B2, OutTake_RPM, PassThrough);
+        SS.Scoring_Grabber(Intake, A2, OutTake_RPM, PassThrough);
         SS.Scoring_Running();
         // Scoring system module
 

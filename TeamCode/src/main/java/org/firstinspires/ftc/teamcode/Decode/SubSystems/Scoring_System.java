@@ -10,7 +10,7 @@ public class Scoring_System {
     Drive_Motor_Setup CH2IN = new Drive_Motor_Setup();
     Drive_Motor_Setup EH2OUT = new Drive_Motor_Setup();
     Servo_Setup EH1S = new Servo_Setup();
-    private boolean InTake_Button;
+    private double InTake;
     private boolean OutTake_Button;
     private double PassThrough;
     private double Outtake_RPM;
@@ -24,24 +24,20 @@ public class Scoring_System {
         // setup
     }
 
-    public void Scoring_Grabber (boolean Inbutton, boolean Outbutton, double OutRPM, double Pass) {
-        InTake_Button = Inbutton;
+    public void Scoring_Grabber (double In, boolean Outbutton, double OutRPM, double Pass) {
+        InTake = In;
         OutTake_Button = Outbutton;
         Outtake_RPM = OutRPM;
         PassThrough = Pass;
     }
 
     public void Scoring_Running () {
-        if (InTake_Button == true) {
-            CH2IN.setMotorSpeed(1);
-        } else {
-            CH2IN.setMotorSpeed(0);
-        }
         if (OutTake_Button == true) {
             EH2OUT.setMotorSpeed(Outtake_RPM);
         } else {
             EH2OUT.setMotorSpeed(0);
         }
+        CH2IN.setMotorSpeed(InTake);
         EH1S.setPower(PassThrough);
     }
     public int Out_Return () {
