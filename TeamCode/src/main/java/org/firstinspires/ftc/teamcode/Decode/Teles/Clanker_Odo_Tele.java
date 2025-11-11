@@ -3,9 +3,11 @@ package org.firstinspires.ftc.teamcode.Decode.Teles;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.Pose2D;
 import org.firstinspires.ftc.teamcode.Decode.Setup.ImportedStuffs.NO_TOUCH.GoBildaPinpointDriver;
-import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
+import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
+import com.acmerobotics.dashboard.FtcDashboard;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.teamcode.Decode.SubSystems.Driving_System;
@@ -23,6 +25,7 @@ public class Clanker_Odo_Tele extends OpMode {
     Scoring_System SS = new Scoring_System();
     // Intake/outtake object
     TelemetryPacket Tele = new TelemetryPacket();
+    FtcDashboard Dash = FtcDashboard.getInstance();
     double LX1;
     double LY1;
     double RX1;
@@ -161,6 +164,7 @@ public class Clanker_Odo_Tele extends OpMode {
         Tele.put("X", XposCurrent);
         Tele.put("Y", YposCurrent);
         Tele.put("R", RposCurrent);
+        Dash.sendTelemetryPacket(Tele);
         // FTC Dashboard text test
             //telemetry moduel
 
