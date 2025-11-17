@@ -3,13 +3,14 @@ package org.firstinspires.ftc.teamcode.Decode.Teles;
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.hardware.IMU;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.teamcode.Decode.SubSystems.Driving_System;
 import org.firstinspires.ftc.teamcode.Decode.SubSystems.Scoring_System;
 
-@TeleOp
+@Disabled
 public class Clanker_Tele extends OpMode {
     Driving_System DS = new Driving_System();
     // drive system object
