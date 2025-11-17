@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode.Decode.Setup.Motor_Servo_Setup;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-public class Servo_Setup {
+public class Cont_Servo_Setup {
     private CRServo servo;
 
     public void init(HardwareMap hwMap, String servoID) {
