@@ -29,25 +29,25 @@ public class Driving_System {
     private double BR;
     private double FL;
     private double BL;
-    Drive_Motor_Setup CH0FR = new Drive_Motor_Setup();
+    Drive_Motor_Setup EH1FR = new Drive_Motor_Setup();
     // FR motor object
-    Drive_Motor_Setup CH1BR = new Drive_Motor_Setup();
+    Drive_Motor_Setup EH0BR = new Drive_Motor_Setup();
     // BR motor object
-    Drive_Motor_Setup EH0FL = new Drive_Motor_Setup();
+    Drive_Motor_Setup CH1FL = new Drive_Motor_Setup();
     // FL motor object
-    Drive_Motor_Setup EH1BL = new Drive_Motor_Setup();
+    Drive_Motor_Setup CH0BL = new Drive_Motor_Setup();
     // FR motor object
 
         //varible asighment
     public void Drive_MotorCal (HardwareMap hardwareMap) {
-        CH0FR.init(hardwareMap, "CH0FrontRight");
-        CH1BR.init(hardwareMap, "CH1BackRight");
-        EH0FL.init(hardwareMap, "EH0FrontLeft");
-        EH1BL.init(hardwareMap, "EH1BackLeft");
-        CH0FR.setDirection(DcMotorSimple.Direction.FORWARD);
-        CH1BR.setDirection(DcMotorSimple.Direction.REVERSE);
-        EH0FL.setDirection(DcMotorSimple.Direction.REVERSE);
-        EH1BL.setDirection(DcMotorSimple.Direction.FORWARD);
+        EH1FR.init(hardwareMap, "EH1FrontRight");
+        EH0BR.init(hardwareMap, "EH0BackRight");
+        CH1FL.init(hardwareMap, "CH1FrontLeft");
+        CH0BL.init(hardwareMap, "CH0BackLeft");
+        EH1FR.setDirection(DcMotorSimple.Direction.FORWARD);
+        EH0BR.setDirection(DcMotorSimple.Direction.FORWARD);
+        CH1FL.setDirection(DcMotorSimple.Direction.FORWARD);
+        CH0BL.setDirection(DcMotorSimple.Direction.FORWARD);
         //setup block
     }
 
@@ -96,25 +96,25 @@ public class Driving_System {
         BR = ((RawBR / MaxRaw) * Power);
         FL = ((RawFL / MaxRaw) * Power);
         BL = ((RawBL / MaxRaw) * Power);
-        CH0FR.setMotorSpeed(FR);
-        CH1BR.setMotorSpeed(BR);
-        EH0FL.setMotorSpeed(FL);
-        EH1BL.setMotorSpeed(BL);
+        EH1FR.setMotorSpeed(FR);
+        EH0BR.setMotorSpeed(BR);
+        CH1FL.setMotorSpeed(FL);
+        CH0BL.setMotorSpeed(BL);
     }
     public double RAPrint () {
         return robotAngle;
     }
 
     public void Move_Forward () {
-        CH0FR.setMotorSpeed(-0.7);
-        CH1BR.setMotorSpeed(+0.7);
-        EH0FL.setMotorSpeed(-0.7);
-        EH1BL.setMotorSpeed(+0.7);
+        EH1FR.setMotorSpeed(-0.7);
+        EH0BR.setMotorSpeed(+0.7);
+        CH1FL.setMotorSpeed(-0.7);
+        CH0BL.setMotorSpeed(+0.7);
     }
     public void Stop () {
-        CH0FR.setMotorSpeed(0);
-        CH1BR.setMotorSpeed(0);
-        EH0FL.setMotorSpeed(0);
-        EH1BL.setMotorSpeed(0);
+        EH1FR.setMotorSpeed(0);
+        EH0BR.setMotorSpeed(0);
+        CH1FL.setMotorSpeed(0);
+        CH0BL.setMotorSpeed(0);
     }
 }
