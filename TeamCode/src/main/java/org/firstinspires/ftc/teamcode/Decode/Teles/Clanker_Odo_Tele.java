@@ -36,7 +36,6 @@ public class Clanker_Odo_Tele extends OpMode {
     boolean A2;
     boolean X2;
     boolean B2;
-    boolean UP2; // LINE ADDED BY NICK FOR TESTING
     double TL2;
     double TR2;
     boolean DU2;
@@ -77,7 +76,7 @@ public class Clanker_Odo_Tele extends OpMode {
 
         LX1 = -1 * gamepad1.left_stick_x;
         LY1 = +1 * gamepad1.left_stick_y;
-        RX1 = +1 * gamepad1.right_stick_x;
+        RX1 = -1 * gamepad1.right_stick_x;
         TL1 = gamepad1.left_trigger;
         TR1 = gamepad1.right_trigger;
         TL2 = gamepad2.left_trigger;
@@ -86,7 +85,7 @@ public class Clanker_Odo_Tele extends OpMode {
         A2 = gamepad2.a;
         X2 = gamepad2.x;
         B2 = gamepad2.b;
-        UP2 = gamepad2.dpad_up;
+        DU2 = gamepad2.dpad_up;
         DD2 = gamepad2.dpad_down;
         // gamepad setting
 
