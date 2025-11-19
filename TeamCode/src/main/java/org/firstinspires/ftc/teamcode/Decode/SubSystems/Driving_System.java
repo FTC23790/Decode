@@ -44,10 +44,10 @@ public class Driving_System {
         EH0BR.init(hardwareMap, "EH0BackRight");
         CH1FL.init(hardwareMap, "CH1FrontLeft");
         CH0BL.init(hardwareMap, "CH0BackLeft");
-        EH1FR.setDirection(DcMotorSimple.Direction.FORWARD);
+        EH1FR.setDirection(DcMotorSimple.Direction.REVERSE);
         EH0BR.setDirection(DcMotorSimple.Direction.FORWARD);
         CH1FL.setDirection(DcMotorSimple.Direction.FORWARD);
-        CH0BL.setDirection(DcMotorSimple.Direction.FORWARD);
+        CH0BL.setDirection(DcMotorSimple.Direction.REVERSE);
         //setup block
     }
 
