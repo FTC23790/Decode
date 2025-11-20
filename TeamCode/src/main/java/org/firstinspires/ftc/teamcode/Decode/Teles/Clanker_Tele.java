@@ -7,14 +7,14 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.hardware.IMU;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
-import org.firstinspires.ftc.teamcode.Decode.SubSystems.Driving_System;
-import org.firstinspires.ftc.teamcode.Decode.SubSystems.Scoring_System;
+//import org.firstinspires.ftc.teamcode.Decode.SubSystems.Driving_System;
+//import org.firstinspires.ftc.teamcode.Decode.SubSystems.Scoring_System;
 
 @Disabled
 public class Clanker_Tele extends OpMode {
-    Driving_System DS = new Driving_System();
+    //Driving_System DS = new Driving_System();
     // drive system object
-    Scoring_System SS = new Scoring_System();
+    //Scoring_System SS = new Scoring_System();
     // Intake/outtake object
     double LX1;
     double LY1;
@@ -44,8 +44,8 @@ public class Clanker_Tele extends OpMode {
                         RevHubOrientationOnRobot.UsbFacingDirection.UP);
         imu.initialize(new IMU.Parameters(RevOrientation));
 
-        DS.Drive_MotorCal(hardwareMap);
-        SS.Score_MotorCal(hardwareMap);
+        //DS.Drive_MotorCal(hardwareMap);
+        //SS.Score_MotorCal(hardwareMap);
         imu.resetYaw();
         //Initilise HardwareMap setup
     }
@@ -106,15 +106,15 @@ public class Clanker_Tele extends OpMode {
         if (A1 == true) {imu.resetYaw();}
         // direction reset
 
-        DS.Drive_Grabber(LX1, LY1, RX1, PowerMod, imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.RADIANS));
-        DS.Drive_Running();
+        //DS.Drive_Grabber(LX1, LY1, RX1, PowerMod, imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.RADIANS));
+        //DS.Drive_Running();
         // drive system module
 
-        SS.Scoring_Grabber(Intake, A2, OutTake_RPM, PassThrough);
-        SS.Scoring_Running();
+        //SS.Scoring_Grabber(Intake, A2, OutTake_RPM, PassThrough);
+        //SS.Scoring_Running();
         // Scoring system module
 
-        telemetry.addData("Heading", ( DS.RAPrint() / ( 2 * 3.14159 ) ) * 360 );
+        //telemetry.addData("Heading", ( DS.RAPrint() / ( 2 * 3.14159 ) ) * 360 );
         telemetry.addData("Power", PowerMod );
         telemetry.addData("X Input",LX1);
         telemetry.addData("Y Input",LY1);
