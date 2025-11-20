@@ -7,23 +7,19 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class Drive_Motor_Setup {
 
-    private DcMotor motor;
     private DcMotorEx motorEx;
     public void init(HardwareMap hwMap, String motorID) {
-        motor = hwMap.get(DcMotor.class, motorID);
-        motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-    }
-    public void setMotorSpeed(double speed){
-        motor.setPower(speed);
+        motorEx = hwMap.get(DcMotorEx.class, motorID);
+        motorEx.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        motorEx.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
     public void setMotorVelocity (double V) {
         motorEx.setVelocity(V);
     }
     public void setDirection(DcMotorSimple.Direction direction){
-        motor.setDirection(direction);
+        motorEx.setDirection(direction);
     }
     public int CurrentPos(){
-        return motor.getCurrentPosition();
+        return motorEx.getCurrentPosition();
     }
 }
