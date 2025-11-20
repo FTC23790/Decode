@@ -1,12 +1,14 @@
 package org.firstinspires.ftc.teamcode.Decode.Setup.Motor_Servo_Setup;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class Drive_Motor_Setup {
 
     private DcMotor motor;
+    private DcMotorEx motorEx;
     public void init(HardwareMap hwMap, String motorID) {
         motor = hwMap.get(DcMotor.class, motorID);
         motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -14,6 +16,9 @@ public class Drive_Motor_Setup {
     }
     public void setMotorSpeed(double speed){
         motor.setPower(speed);
+    }
+    public void setMotorVelocity (int TPS) {
+        motorEx.setVelocity(TPS);
     }
     public void setDirection(DcMotorSimple.Direction direction){
         motor.setDirection(direction);
