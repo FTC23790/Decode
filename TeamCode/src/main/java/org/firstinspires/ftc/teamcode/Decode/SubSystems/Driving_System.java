@@ -29,6 +29,8 @@ public class Driving_System {
     private double BR;
     private double FL;
     private double BL;
+    private double DriveTPS;
+
     Drive_Motor_Setup EH1FR = new Drive_Motor_Setup();
     // FR motor object
     Drive_Motor_Setup EH0BR = new Drive_Motor_Setup();
@@ -49,6 +51,8 @@ public class Driving_System {
         CH1FL.setDirection(DcMotorSimple.Direction.FORWARD);
         CH0BL.setDirection(DcMotorSimple.Direction.REVERSE);
         //setup block
+        DriveTPS = 2787.625;
+        // 2,787.625 ticks per second for drive motors
     }
 
     public void Drive_Grabber (double StickX, double StickY, double StickR, double PowerMod, double IMUY) {
@@ -92,14 +96,14 @@ public class Driving_System {
 
     public void Drive_Running () {
         Drive_Maths();
-        FR = ((RawFR / MaxRaw) * Power);
-        BR = ((RawBR / MaxRaw) * Power);
-        FL = ((RawFL / MaxRaw) * Power);
-        BL = ((RawBL / MaxRaw) * Power);
-        EH1FR.setMotorSpeed(FR);
-        EH0BR.setMotorSpeed(BR);
-        CH1FL.setMotorSpeed(FL);
-        CH0BL.setMotorSpeed(BL);
+        FR = ( (RawFR / MaxRaw) * (Power * DriveTPS) );
+        BR = ( (RawBR / MaxRaw) * (Power * DriveTPS) );
+        FL = ( (RawFL / MaxRaw) * (Power * DriveTPS) );
+        BL = ( (RawBL / MaxRaw) * (Power * DriveTPS) );
+        EH1FR.setMotorVelocity(FR/DriveTPS);
+        EH0BR.setMotorVelocity(BR/DriveTPS);
+        CH1FL.setMotorVelocity(FL/DriveTPS);
+        CH0BL.setMotorVelocity(BL/DriveTPS);
     }
     public double RAPrint () {
         return robotAngle;
