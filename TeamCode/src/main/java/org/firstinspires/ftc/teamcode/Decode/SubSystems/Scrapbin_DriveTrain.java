@@ -33,10 +33,10 @@ public class Scrapbin_DriveTrain {
         Power = PowerMod;
         // feed in info from opmode
     }
-    public void Bin_Drive_Running () {
-        FR0.setMotorSpeed(Left);
-        FL1.setMotorSpeed(Left);
-        BR2.setMotorSpeed(Right);
-        BL3.setMotorSpeed(Right);
-    }
+    //public void Bin_Drive_Running () {
+        //FR0.setMotorSpeed(Left);
+        //FL1.setMotorSpeed(Left);
+        //BR2.setMotorSpeed(Right);
+        //BL3.setMotorSpeed(Right);
+    //}
 }
