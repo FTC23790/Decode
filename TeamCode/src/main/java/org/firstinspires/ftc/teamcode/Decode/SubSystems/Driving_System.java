@@ -110,15 +110,15 @@ public class Driving_System {
     }
 
     public void Move_Forward () {
-        EH1FR.setMotorSpeed(-0.7);
-        EH0BR.setMotorSpeed(+0.7);
-        CH1FL.setMotorSpeed(-0.7);
-        CH0BL.setMotorSpeed(+0.7);
+        EH1FR.setMotorVelocity(-0.7*DriveTPS);
+        EH0BR.setMotorVelocity(-0.7*DriveTPS);
+        CH1FL.setMotorVelocity(-0.7*DriveTPS);
+        CH0BL.setMotorVelocity(-0.7*DriveTPS);
     }
     public void Stop () {
-        EH1FR.setMotorSpeed(0);
-        EH0BR.setMotorSpeed(0);
-        CH1FL.setMotorSpeed(0);
-        CH0BL.setMotorSpeed(0);
+        EH1FR.setMotorVelocity(0);
+        EH0BR.setMotorVelocity(0);
+        CH1FL.setMotorVelocity(0);
+        CH0BL.setMotorVelocity(0);
     }
 }
