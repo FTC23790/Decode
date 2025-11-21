@@ -96,19 +96,15 @@ public class Driving_System {
 
     public void Drive_Running () {
         Drive_Maths();
-        FR = ( (RawFR / MaxRaw) * (Power * DriveTPS) );
-        BR = ( (RawBR / MaxRaw) * (Power * DriveTPS) );
-        FL = ( (RawFL / MaxRaw) * (Power * DriveTPS) );
-        BL = ( (RawBL / MaxRaw) * (Power * DriveTPS) );
-        EH1FR.setMotorVelocity(FR/DriveTPS);
-        EH0BR.setMotorVelocity(BR/DriveTPS);
-        CH1FL.setMotorVelocity(FL/DriveTPS);
-        CH0BL.setMotorVelocity(BL/DriveTPS);
+        FR = ( (RawFR / MaxRaw) * Power);
+        BR = ( (RawBR / MaxRaw) * Power);
+        FL = ( (RawFL / MaxRaw) * Power);
+        BL = ( (RawBL / MaxRaw) * Power);
+        EH1FR.setMotorVelocity(FR * DriveTPS);
+        EH0BR.setMotorVelocity(BR * DriveTPS);
+        CH1FL.setMotorVelocity(FL * DriveTPS);
+        CH0BL.setMotorVelocity(BL * DriveTPS);
     }
-    public double RAPrint () {
-        return robotAngle;
-    }
-
     public void Move_Forward () {
         EH1FR.setMotorVelocity(-0.7*DriveTPS);
         EH0BR.setMotorVelocity(-0.7*DriveTPS);
