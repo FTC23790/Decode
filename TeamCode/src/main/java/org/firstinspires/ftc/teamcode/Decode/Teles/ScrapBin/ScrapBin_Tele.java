@@ -1,13 +1,12 @@
-package org.firstinspires.ftc.teamcode.Decode.Teles;
+package org.firstinspires.ftc.teamcode.Decode.Teles.ScrapBin;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import org.firstinspires.ftc.teamcode.Decode.SubSystems.Scrapbin_DriveTrain;
 
 @Disabled
-public class Scrapbin_Tele extends OpMode {
+public class ScrapBin_Tele extends OpMode {
     Scrapbin_DriveTrain SBDS = new Scrapbin_DriveTrain();
     double PowerMod;
     double LY1;

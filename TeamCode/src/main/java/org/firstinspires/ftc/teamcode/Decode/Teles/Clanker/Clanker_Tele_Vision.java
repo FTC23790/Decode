@@ -1,8 +1,9 @@
-package org.firstinspires.ftc.teamcode.Decode.Teles;
+package org.firstinspires.ftc.teamcode.Decode.Teles.Clanker;
 
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.hardware.IMU;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
@@ -10,7 +11,7 @@ import org.firstinspires.ftc.teamcode.Decode.SubSystems.Driving_System;
 
 import com.qualcomm.hardware.limelightvision.Limelight3A;
 
-@TeleOp
+@Disabled
 public class Clanker_Tele_Vision extends OpMode {
     Driving_System DS = new Driving_System();
     // drive system object
@@ -81,7 +82,6 @@ public class Clanker_Tele_Vision extends OpMode {
         DS.Drive_Running();
         // drive system module
 
-        telemetry.addData("Heading", ( DS.RAPrint() / ( 2 * 3.14159 ) ) * 360 );
         telemetry.addData("Power", PowerMod );
         telemetry.addData("X Input",LX1);
         telemetry.addData("Y Input",LY1);
