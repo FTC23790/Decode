@@ -19,7 +19,7 @@ public class Scoring_System {
         CH0IN.init(hardwareMap,"CHS0Intake");
         EH2OUT.init(hardwareMap,"EH2OutTake");
         EHS0Pass.init(hardwareMap,"EHS0PassThrough");
-        CH0IN.setDirection(DcMotorSimple.Direction.FORWARD);
+        CH0IN.setDirection(DcMotorSimple.Direction.REVERSE);
         EH2OUT.setDirection(DcMotorSimple.Direction.REVERSE);
         EHS0Pass.setDirection(DcMotorSimple.Direction.FORWARD);
         // setup
@@ -46,8 +46,4 @@ public class Scoring_System {
         }
         EHS0Pass.setPower(PassThrough);
     }
-    public int Out_Return () {
-        return EH2OUT.CurrentPos();
-    }
-
 }

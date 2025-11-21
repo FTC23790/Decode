@@ -120,19 +120,17 @@ public class Clanker_Odo_Tele extends OpMode {
         oldTime = newTime;
         // odo update module
 
-        //telemetry.addData("Heading", ( DS.RAPrint() / ( 2 * 3.14159 ) ) * 360 );
-        //telemetry.addData("X Input",LX1);
-        //telemetry.addData("Y Input",LY1);
-        //telemetry.addData("R Input",RX1);
+        telemetry.addData("X Input",LX1);
+        telemetry.addData("Y Input",LY1);
+        telemetry.addData("R Input",RX1);
         // normal telmetry
-        //telemetry.addLine();
-        //telemetry.addLine("Odo bits");
+        telemetry.addLine();
         telemetry.addData("Odo_X", XposCurrent);
         telemetry.addData("Odo_Y", YposCurrent);
         telemetry.addData("Odo_R", RposCurrent);
         telemetry.addData("Power", PowerMod );
+
         // odo telemtery
-        telemetry.addLine();
         Tele.put("X", XposCurrent);
         Tele.put("Y", YposCurrent);
         Tele.put("R", RposCurrent);
