@@ -15,6 +15,7 @@ public class Scrapbin_DriveTrain {
     double Left;
     double Right;
     double Power;
+    double ScapDriveTPS;
 
     public void Bin_Drive_MotorCal (HardwareMap hardwareMap) {
         FR0.init(hardwareMap, "String-littleral-name");
@@ -26,6 +27,8 @@ public class Scrapbin_DriveTrain {
         BR2.setDirection(DcMotorSimple.Direction.FORWARD);
         BL3.setDirection(DcMotorSimple.Direction.FORWARD);
         //setup block
+        ScapDriveTPS = 1;
+            // set equal to ticks per second of the drive motors of scrapbin
     }
     public void Bin_Drive_Grabber (double left_side, double right_side, double PowerMod) {
         Left = left_side;
@@ -33,10 +36,10 @@ public class Scrapbin_DriveTrain {
         Power = PowerMod;
         // feed in info from opmode
     }
-    //public void Bin_Drive_Running () {
-        //FR0.setMotorSpeed(Left);
-        //FL1.setMotorSpeed(Left);
-        //BR2.setMotorSpeed(Right);
-        //BL3.setMotorSpeed(Right);
-    //}
+    public void Bin_Drive_Running () {
+        FR0.setMotorVelocity(Left * ScapDriveTPS);
+        FL1.setMotorVelocity(Left * ScapDriveTPS);
+        BR2.setMotorVelocity(Right * ScapDriveTPS);
+        BL3.setMotorVelocity(Right * ScapDriveTPS);
+    }
 }

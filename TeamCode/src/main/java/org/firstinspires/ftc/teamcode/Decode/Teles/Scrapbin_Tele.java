@@ -4,11 +4,11 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
-//import org.firstinspires.ftc.teamcode.Decode.SubSystems.Scrapbin_DriveTrain;
+import org.firstinspires.ftc.teamcode.Decode.SubSystems.Scrapbin_DriveTrain;
 
 @Disabled
 public class Scrapbin_Tele extends OpMode {
-    //Scrapbin_DriveTrain SBDS = new Scrapbin_DriveTrain();
+    Scrapbin_DriveTrain SBDS = new Scrapbin_DriveTrain();
     double PowerMod;
     double LY1;
     double RY1;
@@ -34,8 +34,8 @@ public class Scrapbin_Tele extends OpMode {
         }
         //power matrix
 
-        //SBDS.Bin_Drive_Grabber(LY1, RY1, PowerMod);
-        //SBDS.Bin_Drive_Running();
+        SBDS.Bin_Drive_Grabber(LY1, RY1, PowerMod);
+        SBDS.Bin_Drive_Running();
         // drive system module
     }
 }
