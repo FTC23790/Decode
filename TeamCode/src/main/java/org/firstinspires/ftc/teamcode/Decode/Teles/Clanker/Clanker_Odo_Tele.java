@@ -29,8 +29,8 @@ public class Clanker_Odo_Tele extends OpMode {
     double LX1;
     double LY1;
     double RX1;
-    double TL1;
-    double TR1;
+    boolean BL1;
+    boolean BR1;
     double PowerMod;
     boolean A1;
     boolean A2;
@@ -72,8 +72,8 @@ public class Clanker_Odo_Tele extends OpMode {
         LX1 = -1 * gamepad1.left_stick_x;
         LY1 = +1 * gamepad1.left_stick_y;
         RX1 = -1 * gamepad1.right_stick_x;
-        TL1 = gamepad1.left_trigger;
-        TR1 = gamepad1.right_trigger;
+        BL1 = gamepad1.left_bumper;
+        BR1 = gamepad1.right_bumper;
         A1 = gamepad1.a;
         A2 = gamepad2.a;
         X2 = gamepad2.x;
@@ -82,9 +82,9 @@ public class Clanker_Odo_Tele extends OpMode {
         BR2 = gamepad2.right_bumper;
         // gamepad setting
 
-        if ( 0.2 < TL1 ) {
+        if (BL1 == true) {
             PowerMod = 1.0;
-        } else if (0.2 < TR1) {
+        } else if (BR1 == true) {
             PowerMod = 0.4;
         } else {
             PowerMod = 0.7;
@@ -122,8 +122,8 @@ public class Clanker_Odo_Tele extends OpMode {
         telemetry.addData("Odo_Y", YposCurrent);
         telemetry.addData("Odo_R", RposCurrent);
         telemetry.addData("Power", PowerMod );
-
         // odo telemtery
+
         Tele.put("X", XposCurrent);
         Tele.put("Y", YposCurrent);
         Tele.put("R", RposCurrent);
