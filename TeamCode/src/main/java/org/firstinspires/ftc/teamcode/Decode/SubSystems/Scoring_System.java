@@ -10,27 +10,32 @@ public class Scoring_System {
     Cont_Servo_Setup CH0IN = new Cont_Servo_Setup();
     // change object name baseded on port
     Drive_Motor_Setup EH2OUT = new Drive_Motor_Setup();
-    Cont_Servo_Setup EHS0Pass = new Cont_Servo_Setup();
+    Cont_Servo_Setup EHS5P = new Cont_Servo_Setup();
+    Cont_Servo_Setup EHS4MP = new Cont_Servo_Setup();
     private double OutTPS;
     private boolean InTake_Button;
     private boolean OutTake_Button;
-    private double PassThrough;
+    private boolean Pass;
+    private boolean MiniPass;
     public void Score_MotorCal (HardwareMap hardwareMap) {
         CH0IN.init(hardwareMap,"CHS0Intake");
         EH2OUT.init(hardwareMap,"EH2OutTake");
-        EHS0Pass.init(hardwareMap,"EHS0PassThrough");
+        EHS5P.init(hardwareMap,"EHS5Pass");
+        EHS4MP.init(hardwareMap,"EHS0MiniPass");
         CH0IN.setDirection(DcMotorSimple.Direction.REVERSE);
         EH2OUT.setDirection(DcMotorSimple.Direction.REVERSE);
-        EHS0Pass.setDirection(DcMotorSimple.Direction.FORWARD);
+        EHS5P.setDirection(DcMotorSimple.Direction.FORWARD);
+        EHS4MP.setDirection(DcMotorSimple.Direction.FORWARD);
         // setup
         OutTPS = 2800;
         // 2,800 ticks per second for outtake motor
     }
 
-    public void Scoring_Grabber (boolean In, boolean Outbutton, double Pass) {
+    public void Scoring_Grabber (boolean In, boolean Outbutton, boolean Pass, boolean Mini) {
         InTake_Button = In;
         OutTake_Button = Outbutton;
-        PassThrough = Pass;
+        Pass = Pass;
+        MiniPass = Mini;
     }
 
     public void Scoring_Running () {
@@ -44,6 +49,15 @@ public class Scoring_System {
         } else {
             CH0IN.setPower(0);
         }
-        EHS0Pass.setPower(PassThrough);
+        if (Pass == true) {
+            EHS5P.setPower(1);
+        } else {
+            EHS5P.setPower(0);
+        }
+        if (MiniPass == true) {
+            EHS4MP.setPower(1);
+        } else {
+            EHS4MP.setPower(0);
+        }
     }
 }

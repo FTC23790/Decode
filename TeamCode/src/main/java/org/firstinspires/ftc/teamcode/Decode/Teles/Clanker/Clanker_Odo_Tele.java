@@ -38,7 +38,7 @@ public class Clanker_Odo_Tele extends OpMode {
     boolean B2;
     boolean DU2;
     boolean DD2;
-    double PassThrough;
+    boolean DD1;
     double XposCurrent;
     double YposCurrent;
     double RposCurrent;
@@ -79,6 +79,7 @@ public class Clanker_Odo_Tele extends OpMode {
         X2 = gamepad2.x;
         DU2 = gamepad2.dpad_up;
         DD2 = gamepad2.dpad_down;
+        DD1 = gamepad1.dpad_up;
         // gamepad setting
 
         if ( 0.2 < TL1 ) {
@@ -90,24 +91,19 @@ public class Clanker_Odo_Tele extends OpMode {
         }
         //power matrix
 
-        if (DU2 == true) {
-            PassThrough = 1;
-        } else if (DD2 == true) {
-            PassThrough = -1;
-        } else {
-            PassThrough = 0;
-        }
-        // passthrough direction matrix
-
 
         if (A1 == true) {odo.resetPosAndIMU();}
         //odo yaw reset
+
+        if (DD1 == true) {
+            DS.Move_Backward();
+        }
 
         DS.Drive_Grabber(LX1, LY1, RX1, PowerMod, odo.getHeading(AngleUnit.RADIANS) );
         DS.Drive_Running();
         // drive system module
 
-        SS.Scoring_Grabber(X2, A2, PassThrough);
+        SS.Scoring_Grabber(X2, A2, DU2, DD2);
         SS.Scoring_Running();
         // Scoring system module
 
