@@ -15,7 +15,6 @@ import org.firstinspires.ftc.teamcode.Decode.SubSystems.Scoring_System;
 
 @TeleOp
 public class Clanker_Odo_Tele extends OpMode {
-
     GoBildaPinpointDriver odo;
     // makes odo object
     double oldTime = 0;
@@ -53,7 +52,8 @@ public class Clanker_Odo_Tele extends OpMode {
         odo = hardwareMap.get(GoBildaPinpointDriver.class, "pinpoint");
         odo.setOffsets(0 , 0 , DistanceUnit.CM);
         odo.setEncoderResolution(GoBildaPinpointDriver.GoBildaOdometryPods.goBILDA_4_BAR_POD);
-        odo.setEncoderDirections(GoBildaPinpointDriver.EncoderDirection.REVERSED , GoBildaPinpointDriver.EncoderDirection.FORWARD);
+        odo.setEncoderDirections(GoBildaPinpointDriver.EncoderDirection.REVERSED
+                , GoBildaPinpointDriver.EncoderDirection.FORWARD);
         // x dirention then y dierncton
         odo.resetPosAndIMU();
         // odo cal bits
@@ -93,10 +93,8 @@ public class Clanker_Odo_Tele extends OpMode {
         }
         //power matrix
 
-
         if (A1 == true) {odo.resetPosAndIMU();}
         //odo yaw reset
-
 
         if (DD1 == true) {
             DS.Drive_Grabber(0, 1, 0, PowerMod, 0);
