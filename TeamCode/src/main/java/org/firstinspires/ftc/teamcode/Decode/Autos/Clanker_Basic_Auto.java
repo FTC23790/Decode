@@ -1,64 +1,26 @@
 package org.firstinspires.ftc.teamcode.Decode.Autos;
 
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
-import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
-import org.firstinspires.ftc.robotcore.external.navigation.Pose2D;
 import org.firstinspires.ftc.teamcode.Decode.SubSystems.Driving_System_Field;
-import org.firstinspires.ftc.teamcode.Decode.Setup.ImportedStuffs.NO_TOUCH.GoBildaPinpointDriver;
+
 
 @Autonomous
-public class Clanker_Basic_Auto extends OpMode {
+public class Clanker_Basic_Auto extends LinearOpMode {
     Driving_System_Field DS = new Driving_System_Field();
-    GoBildaPinpointDriver odo;
-    // makes odo object
-    double oldTime = 0;
-    double XposCurrent;
-    double YposCurrent;
-    double RposCurrent;
     @Override
-    public void init() {
+    public void runOpMode() {
         DS.Drive_MotorCal(hardwareMap);
-
-        odo = hardwareMap.get(GoBildaPinpointDriver.class, "Clanker_Odo");
-        odo.setOffsets(0 , 0 , DistanceUnit.CM);
-        odo.setEncoderResolution(GoBildaPinpointDriver.GoBildaOdometryPods.goBILDA_4_BAR_POD);
-        odo.setEncoderDirections(GoBildaPinpointDriver.EncoderDirection.REVERSED , GoBildaPinpointDriver.EncoderDirection.FORWARD);
-        // x dirention then y dierncton
-        odo.resetPosAndIMU();
-        // odo cal bits
-    }
-
-    @Override
-    public void loop() {
-        Pose2D pos = odo.getPosition();
-        XposCurrent = pos.getY(DistanceUnit.INCH);
-        YposCurrent = pos.getX(DistanceUnit.INCH);
-        RposCurrent = pos.getHeading(AngleUnit.DEGREES);
-
-        odo.update();
-        // self explaitry
-
-        double newTime = getRuntime();
-        double loopTime = newTime-oldTime;
-        double frequency = 1/loopTime;
-        oldTime = newTime;
-        // odo update module
-
-        telemetry.addLine("Odo bits");
-        telemetry.addData("Odo_X", XposCurrent);
-        telemetry.addData("Odo_Y", YposCurrent);
-        telemetry.addData("Odo_R", RposCurrent);
-
-        if (YposCurrent >= 10) {
-            // it says stop at 10 inches, but it has 10 inches of stoping distance so
-            // it actuly stops after  20 inches
-            DS.Stop();
-        } else {
-            DS.Move_Forward();
+        waitForStart();
+        while (opModeIsActive()) {
+            DS.Drive_Grabber(0,-1,0,0.7,0);
+            DS.Drive_Running();
+            sleep(600);
+            DS.Drive_Grabber(0,0,0,0,0);
+            DS.Drive_Running();
+            sleep(300);
+            break;
         }
-
     }
 }
