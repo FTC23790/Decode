@@ -6,12 +6,12 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.Pose2D;
-import org.firstinspires.ftc.teamcode.Decode.SubSystems.Driving_System;
+import org.firstinspires.ftc.teamcode.Decode.SubSystems.Driving_System_Field;
 import org.firstinspires.ftc.teamcode.Decode.Setup.ImportedStuffs.NO_TOUCH.GoBildaPinpointDriver;
 
 @Autonomous
 public class Clanker_Basic_Auto extends OpMode {
-    Driving_System DS = new Driving_System();
+    Driving_System_Field DS = new Driving_System_Field();
     GoBildaPinpointDriver odo;
     // makes odo object
     double oldTime = 0;

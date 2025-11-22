@@ -10,7 +10,7 @@ import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.acmerobotics.dashboard.FtcDashboard;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
-import org.firstinspires.ftc.teamcode.Decode.SubSystems.Driving_System;
+import org.firstinspires.ftc.teamcode.Decode.SubSystems.Driving_System_Field;
 import org.firstinspires.ftc.teamcode.Decode.SubSystems.Scoring_System;
 
 @TeleOp
@@ -20,7 +20,7 @@ public class Clanker_Odo_Tele extends OpMode {
     // makes odo object
     double oldTime = 0;
     // odo bit
-    Driving_System DS = new Driving_System();
+    Driving_System_Field DS = new Driving_System_Field();
     // drive system object
     Scoring_System SS = new Scoring_System();
     // Intake/outtake object
@@ -39,6 +39,7 @@ public class Clanker_Odo_Tele extends OpMode {
     boolean BL2;
     boolean BR2;
     boolean DD1;
+    boolean DD2;
     double XposCurrent;
     double YposCurrent;
     double RposCurrent;
@@ -78,6 +79,7 @@ public class Clanker_Odo_Tele extends OpMode {
         A2 = gamepad2.a;
         X2 = gamepad2.x;
         DD1 = gamepad1.dpad_up;
+        DD2 = gamepad2.dpad_down;
         BL2 = gamepad2.left_bumper;
         BR2 = gamepad2.right_bumper;
         // gamepad setting
@@ -100,7 +102,7 @@ public class Clanker_Odo_Tele extends OpMode {
         DS.Drive_Running();
         // drive system module
 
-        SS.Scoring_Grabber(X2, A2, BL2, BR2);
+        SS.Scoring_Grabber(X2, A2, BL2, BR2, DD2);
         SS.Scoring_Running();
         // Scoring system module
 

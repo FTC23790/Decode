@@ -17,6 +17,7 @@ public class Scoring_System {
     private boolean OutTake_Button;
     private boolean BigPass;
     private boolean MiniPass;
+    private boolean Back;
     public void Score_MotorCal (HardwareMap hardwareMap) {
         CH0IN.init(hardwareMap,"CHS0Intake");
         EH2OUT.init(hardwareMap,"EH2OutTake");
@@ -31,16 +32,17 @@ public class Scoring_System {
         // 2,800 ticks per second for outtake motor
     }
 
-    public void Scoring_Grabber (boolean In, boolean Outbutton, boolean Pass, boolean Mini) {
+    public void Scoring_Grabber (boolean In, boolean Outbutton, boolean Pass, boolean Mini, boolean Pass_back) {
         InTake_Button = In;
         OutTake_Button = Outbutton;
         BigPass = Pass;
         MiniPass = Mini;
+        Back = Pass_back;
     }
 
     public void Scoring_Running () {
         if (OutTake_Button == true) {
-            EH2OUT.setMotorVelocity(OutTPS * 0.65);
+            EH2OUT.setMotorVelocity(OutTPS * 0.67);
         } else {
             EH2OUT.setMotorVelocity(0);
         }
@@ -51,6 +53,8 @@ public class Scoring_System {
         }
         if (BigPass == true) {
             EHS5P.setPower(1);
+        } else if (Back == true) {
+            EHS5P.setPower(-1);
         } else {
             EHS5P.setPower(0);
         }
