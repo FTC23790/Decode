@@ -78,7 +78,7 @@ public class Clanker_Odo_Tele extends OpMode {
         A1 = gamepad1.a;
         A2 = gamepad2.a;
         X2 = gamepad2.x;
-        DD1 = gamepad1.dpad_up;
+        DD1 = gamepad1.dpad_down;
         DD2 = gamepad2.dpad_down;
         BL2 = gamepad2.left_bumper;
         BR2 = gamepad2.right_bumper;
@@ -98,7 +98,11 @@ public class Clanker_Odo_Tele extends OpMode {
         //odo yaw reset
 
 
-        DS.Drive_Grabber(LX1, LY1, RX1, PowerMod, odo.getHeading(AngleUnit.RADIANS) );
+        if (DD1 == true) {
+            DS.Drive_Grabber(0, 1, 0, PowerMod, 0);
+        } else {
+            DS.Drive_Grabber(LX1, LY1, RX1, PowerMod, odo.getHeading(AngleUnit.RADIANS) );
+        }
         DS.Drive_Running();
         // drive system module
 

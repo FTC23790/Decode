@@ -105,22 +105,5 @@ public class Driving_System {
         CH1FL.setMotorVelocity(FL * DriveTPS);
         CH0BL.setMotorVelocity(BL * DriveTPS);
     }
-    public void Move_Forward () {
-        EH1FR.setMotorVelocity(-0.7 * DriveTPS);
-        EH0BR.setMotorVelocity(-0.7 * DriveTPS);
-        CH1FL.setMotorVelocity(-0.7 * DriveTPS);
-        CH0BL.setMotorVelocity(-0.7 * DriveTPS);
-    }
-    public void Move_Backward () {
-        EH1FR.setMotorVelocity(0.7 * DriveTPS);
-        EH0BR.setMotorVelocity(0.7 * DriveTPS);
-        CH1FL.setMotorVelocity(0.7 * DriveTPS);
-        CH0BL.setMotorVelocity(0.7 * DriveTPS);
-    }
-    public void Stop () {
-        EH1FR.setMotorVelocity(0);
-        EH0BR.setMotorVelocity(0);
-        CH1FL.setMotorVelocity(0);
-        CH0BL.setMotorVelocity(0);
-    }
+
 }
