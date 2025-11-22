@@ -40,7 +40,7 @@ public class Scoring_System {
 
     public void Scoring_Running () {
         if (OutTake_Button == true) {
-            EH2OUT.setMotorVelocity(OutTPS * 0.4);
+            EH2OUT.setMotorVelocity(OutTPS * 0.65);
         } else {
             EH2OUT.setMotorVelocity(0);
         }
