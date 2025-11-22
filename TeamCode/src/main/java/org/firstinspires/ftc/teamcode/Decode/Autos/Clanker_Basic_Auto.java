@@ -3,12 +3,12 @@ package org.firstinspires.ftc.teamcode.Decode.Autos;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-import org.firstinspires.ftc.teamcode.Decode.SubSystems.Driving_System_Field;
+import org.firstinspires.ftc.teamcode.Decode.SubSystems.Driving_System;
 
 
 @Autonomous
 public class Clanker_Basic_Auto extends LinearOpMode {
-    Driving_System_Field DS = new Driving_System_Field();
+    Driving_System DS = new Driving_System();
     @Override
     public void runOpMode() {
         DS.Drive_MotorCal(hardwareMap);

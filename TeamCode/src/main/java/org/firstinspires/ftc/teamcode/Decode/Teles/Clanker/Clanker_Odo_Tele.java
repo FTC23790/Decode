@@ -10,7 +10,7 @@ import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.acmerobotics.dashboard.FtcDashboard;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
-import org.firstinspires.ftc.teamcode.Decode.SubSystems.Driving_System_Field;
+import org.firstinspires.ftc.teamcode.Decode.SubSystems.Driving_System;
 import org.firstinspires.ftc.teamcode.Decode.SubSystems.Scoring_System;
 
 @TeleOp
@@ -20,7 +20,7 @@ public class Clanker_Odo_Tele extends OpMode {
     // makes odo object
     double oldTime = 0;
     // odo bit
-    Driving_System_Field DS = new Driving_System_Field();
+    Driving_System DS = new Driving_System();
     // drive system object
     Scoring_System SS = new Scoring_System();
     // Intake/outtake object

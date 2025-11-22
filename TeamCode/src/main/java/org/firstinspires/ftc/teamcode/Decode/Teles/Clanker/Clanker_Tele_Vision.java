@@ -6,13 +6,13 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.hardware.IMU;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
-import org.firstinspires.ftc.teamcode.Decode.SubSystems.Driving_System_Field;
+import org.firstinspires.ftc.teamcode.Decode.SubSystems.Driving_System;
 
 import com.qualcomm.hardware.limelightvision.Limelight3A;
 
 @Disabled
 public class Clanker_Tele_Vision extends OpMode {
-    Driving_System_Field DS = new Driving_System_Field();
+    Driving_System DS = new Driving_System();
     // drive system object
     double LX1;
     double LY1;

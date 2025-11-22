@@ -8,7 +8,7 @@ import org.firstinspires.ftc.teamcode.Decode.Setup.Motor_Servo_Setup.Drive_Motor
 
 
 
-public class Driving_System_Field {
+public class Driving_System {
     private double MathX;
     private double DriveX;
     private double MathY;
