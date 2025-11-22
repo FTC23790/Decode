@@ -95,9 +95,6 @@ public class Clanker_Odo_Tele extends OpMode {
         if (A1 == true) {odo.resetPosAndIMU();}
         //odo yaw reset
 
-        if (DD1 == true) {
-            DS.Move_Backward();
-        }
 
         DS.Drive_Grabber(LX1, LY1, RX1, PowerMod, odo.getHeading(AngleUnit.RADIANS) );
         DS.Drive_Running();

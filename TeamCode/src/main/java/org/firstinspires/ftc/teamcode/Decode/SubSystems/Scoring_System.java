@@ -15,13 +15,13 @@ public class Scoring_System {
     private double OutTPS;
     private boolean InTake_Button;
     private boolean OutTake_Button;
-    private boolean Pass;
+    private boolean BigPass;
     private boolean MiniPass;
     public void Score_MotorCal (HardwareMap hardwareMap) {
         CH0IN.init(hardwareMap,"CHS0Intake");
         EH2OUT.init(hardwareMap,"EH2OutTake");
         EHS5P.init(hardwareMap,"EHS5Pass");
-        EHS4MP.init(hardwareMap,"EHS0MiniPass");
+        EHS4MP.init(hardwareMap,"EHS4MiniPass");
         CH0IN.setDirection(DcMotorSimple.Direction.REVERSE);
         EH2OUT.setDirection(DcMotorSimple.Direction.REVERSE);
         EHS5P.setDirection(DcMotorSimple.Direction.FORWARD);
@@ -34,7 +34,7 @@ public class Scoring_System {
     public void Scoring_Grabber (boolean In, boolean Outbutton, boolean Pass, boolean Mini) {
         InTake_Button = In;
         OutTake_Button = Outbutton;
-        Pass = Pass;
+        BigPass = Pass;
         MiniPass = Mini;
     }
 
@@ -49,7 +49,7 @@ public class Scoring_System {
         } else {
             CH0IN.setPower(0);
         }
-        if (Pass == true) {
+        if (BigPass == true) {
             EHS5P.setPower(1);
         } else {
             EHS5P.setPower(0);
