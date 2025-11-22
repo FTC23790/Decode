@@ -36,8 +36,8 @@ public class Clanker_Odo_Tele extends OpMode {
     boolean A2;
     boolean X2;
     boolean B2;
-    boolean DU2;
-    boolean DD2;
+    boolean BL2;
+    boolean BR2;
     boolean DD1;
     double XposCurrent;
     double YposCurrent;
@@ -77,9 +77,9 @@ public class Clanker_Odo_Tele extends OpMode {
         A1 = gamepad1.a;
         A2 = gamepad2.a;
         X2 = gamepad2.x;
-        DU2 = gamepad2.dpad_up;
-        DD2 = gamepad2.dpad_down;
         DD1 = gamepad1.dpad_up;
+        BL2 = gamepad2.left_bumper;
+        BR2 = gamepad2.right_bumper;
         // gamepad setting
 
         if ( 0.2 < TL1 ) {
@@ -100,7 +100,7 @@ public class Clanker_Odo_Tele extends OpMode {
         DS.Drive_Running();
         // drive system module
 
-        SS.Scoring_Grabber(X2, A2, DU2, DD2);
+        SS.Scoring_Grabber(X2, A2, BL2, BR2);
         SS.Scoring_Running();
         // Scoring system module
 
