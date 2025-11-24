@@ -14,7 +14,7 @@ import org.firstinspires.ftc.teamcode.Decode.SubSystems.Driving_System;
 import org.firstinspires.ftc.teamcode.Decode.SubSystems.Scoring_System;
 
 @TeleOp
-public class Clanker_Odo_Tele extends OpMode {
+public class Clanker_Comp_Tele extends OpMode {
     GoBildaPinpointDriver odo;
     // makes odo object
     double oldTime = 0;
@@ -85,7 +85,7 @@ public class Clanker_Odo_Tele extends OpMode {
         DD1 = gamepad1.dpad_down;
         DU1 = gamepad1.dpad_up;
         DL1 = gamepad1.dpad_left;
-        DR1 = gamepad1.right_bumper;
+        DR1 = gamepad1.dpad_right;
         BL2 = gamepad2.left_bumper;
         BR2 = gamepad2.right_bumper;
         // gamepad setting
