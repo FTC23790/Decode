@@ -141,13 +141,16 @@ public class Clanker_Comp_Tele extends OpMode {
         telemetry.addData("Odo_R", RposCurrent);
         telemetry.addData("Power", PowerMod );
         // odo telemtery
+        telemetry.addLine();
+        telemetry.addLine();
+        telemetry.addData("Outtake TPS", SS.getOutPower());
 
         Tele.put("X", XposCurrent);
         Tele.put("Y", YposCurrent);
         Tele.put("R", RposCurrent);
         Dash.sendTelemetryPacket(Tele);
         // FTC Dashboard text test
-            //telemetry moduel
+            //telemetry module
 
     }
 }

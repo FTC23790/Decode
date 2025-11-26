@@ -16,6 +16,12 @@ public class Drive_Motor_Setup {
     public void setMotorVelocity (double V) {
         motorEx.setVelocity(V);
     }
+    public void setMotorPower (double pow) {
+        motorEx.setPower(pow);
+    }
+    public double getMotorPower () {
+        return motorEx.getPower();
+    }
     public void setDirection(DcMotorSimple.Direction direction){
         motorEx.setDirection(direction);
     }

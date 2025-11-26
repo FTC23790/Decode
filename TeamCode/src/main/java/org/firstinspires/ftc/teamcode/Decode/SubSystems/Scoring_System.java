@@ -9,7 +9,7 @@ import org.firstinspires.ftc.teamcode.Decode.Setup.Motor_Servo_Setup.Cont_Servo_
 public class Scoring_System {
     Cont_Servo_Setup CH0IN = new Cont_Servo_Setup();
     // change object name baseded on port
-    Drive_Motor_Setup EH2OUT = new Drive_Motor_Setup();
+    Drive_Motor_Setup EH3OUT = new Drive_Motor_Setup();
     Cont_Servo_Setup EHS5P = new Cont_Servo_Setup();
     Cont_Servo_Setup EHS4MP = new Cont_Servo_Setup();
     private double OutTPS;
@@ -20,11 +20,11 @@ public class Scoring_System {
     private boolean Back;
     public void Score_MotorCal (HardwareMap hardwareMap) {
         CH0IN.init(hardwareMap,"CHS0Intake");
-        EH2OUT.init(hardwareMap,"EH2OutTake");
+        EH3OUT.init(hardwareMap,"EH3OutTake");
         EHS5P.init(hardwareMap,"EHS5Pass");
         EHS4MP.init(hardwareMap,"EHS4MiniPass");
         CH0IN.setDirection(DcMotorSimple.Direction.REVERSE);
-        EH2OUT.setDirection(DcMotorSimple.Direction.REVERSE);
+        EH3OUT.setDirection(DcMotorSimple.Direction.REVERSE);
         EHS5P.setDirection(DcMotorSimple.Direction.FORWARD);
         EHS4MP.setDirection(DcMotorSimple.Direction.FORWARD);
         // setup
@@ -56,7 +56,11 @@ public class Scoring_System {
         // intake power
         EHS4MP.setPower(1);
         // minipass power
-        EH2OUT.setMotorVelocity(OutTPS * (2/3));
+        //EH3OUT.setMotorVelocity(OutTPS * (2/3));
+        EH3OUT.setMotorPower( 2 / 3 );
         // outtake power 4k rpm
+    }
+    public double getOutPower () {
+        return EH3OUT.getMotorPower();
     }
 }
