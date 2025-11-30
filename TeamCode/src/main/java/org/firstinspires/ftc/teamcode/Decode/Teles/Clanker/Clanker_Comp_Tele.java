@@ -37,11 +37,8 @@ public class Clanker_Comp_Tele extends OpMode {
     boolean B2;
     boolean BL2;
     boolean BR2;
-    boolean DD2;
     boolean DD1;
-    boolean DU1;
-    boolean DL1;
-    boolean DR1;
+    boolean DD2;
     double XposCurrent;
     double YposCurrent;
     double RposCurrent;
@@ -81,11 +78,8 @@ public class Clanker_Comp_Tele extends OpMode {
         A1 = gamepad1.a;
         A2 = gamepad2.a;
         X2 = gamepad2.x;
-        DD2 = gamepad2.dpad_down;
         DD1 = gamepad1.dpad_down;
-        DU1 = gamepad1.dpad_up;
-        DL1 = gamepad1.dpad_left;
-        DR1 = gamepad1.dpad_right;
+        DD2 = gamepad2.dpad_down;
         BL2 = gamepad2.left_bumper;
         BR2 = gamepad2.right_bumper;
         // gamepad setting
@@ -104,21 +98,13 @@ public class Clanker_Comp_Tele extends OpMode {
 
         if (DD1 == true) {
             DS.Drive_Grabber(0, 1, 0, PowerMod, 0);
-        } else if (DU1 == true) {
-            DS.Drive_Grabber(0, -1, 0, PowerMod, 0);
-        } else if (DL1 == true) {
-            DS.Drive_Grabber(-1, 0, 0, PowerMod, 0);
-        } else if (DR1 == true) {
-            DS.Drive_Grabber(1, 0, 0, PowerMod, 0);
         } else {
             DS.Drive_Grabber(LX1, LY1, RX1, PowerMod, odo.getHeading(AngleUnit.RADIANS) );
         }
-
         DS.Drive_Running();
         // drive system module
 
-        //SS.Scoring_Grabber(X2, A2, BL2, BR2, DD2);
-        SS.Scoring_Grabber(BL2, DD2);
+        SS.Scoring_Grabber(X2, A2, BL2, BR2, DD2);
         SS.Scoring_Running();
         // Scoring system module
 
@@ -141,16 +127,13 @@ public class Clanker_Comp_Tele extends OpMode {
         telemetry.addData("Odo_R", RposCurrent);
         telemetry.addData("Power", PowerMod );
         // odo telemtery
-        telemetry.addLine();
-        telemetry.addLine();
-        telemetry.addData("Outtake TPS", SS.getOutPower());
 
         Tele.put("X", XposCurrent);
         Tele.put("Y", YposCurrent);
         Tele.put("R", RposCurrent);
         Dash.sendTelemetryPacket(Tele);
         // FTC Dashboard text test
-            //telemetry module
+        //telemetry moduel
 
     }
 }
