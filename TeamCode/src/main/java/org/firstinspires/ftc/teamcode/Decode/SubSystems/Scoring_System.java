@@ -32,25 +32,13 @@ public class Scoring_System {
         // 2,800 ticks per second for outtake motor
     }
 
-    public void Scoring_Grabber (boolean In, boolean Outbutton, boolean Pass, boolean Mini, boolean Pass_back) {
-        InTake_Button = In;
-        OutTake_Button = Outbutton;
+    public void Scoring_Grabber (boolean Pass, boolean Pass_back) {
         BigPass = Pass;
-        MiniPass = Mini;
         Back = Pass_back;
     }
 
     public void Scoring_Running () {
-        if (OutTake_Button == true) {
-            EH3OUT.setMotorVelocity(OutTPS * 0.67);
-        } else {
-            EH3OUT.setMotorVelocity(0);
-        }
-        if (InTake_Button == true) {
-            CH0IN.setPower(1);
-        } else {
-            CH0IN.setPower(0);
-        }
+
         if (BigPass == true) {
             EHS5P.setPower(1);
         } else if (Back == true) {
@@ -58,10 +46,13 @@ public class Scoring_System {
         } else {
             EHS5P.setPower(0);
         }
-        if (MiniPass == true) {
-            EHS4MP.setPower(1);
-        } else {
-            EHS4MP.setPower(0);
-        }
+
+        EHS4MP.setPower(1);
+        // Mini Pass Power to full
+        CH0IN.setPower(1);
+        // Intake Power to full
+        EH3OUT.setMotorVelocity(OutTPS * (0.67));
+        //EH3OUT.setMotorVelocity(OutTPS * (2/3));
+        // Outake "Power" to two thirds
     }
 }
