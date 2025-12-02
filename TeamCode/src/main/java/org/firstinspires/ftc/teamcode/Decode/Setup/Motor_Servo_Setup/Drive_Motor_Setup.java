@@ -16,6 +16,9 @@ public class Drive_Motor_Setup {
     public void setMotorVelocity (double V) {
         motorEx.setVelocity(V);
     }
+    public double getMotorVelocity () {
+        return motorEx.getVelocity();
+    }
     public void setMotorPower (double pow) {
         motorEx.setPower(pow);
     }

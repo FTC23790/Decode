@@ -51,8 +51,15 @@ public class Scoring_System {
         // Mini Pass Power to full
         CH0IN.setPower(1);
         // Intake Power to full
-        EH3OUT.setMotorVelocity(OutTPS * (0.67));
+        //EH3OUT.setMotorVelocity(OutTPS * (0.67));
         //EH3OUT.setMotorVelocity(OutTPS * (2/3));
         // Outake "Power" to two thirds
+    }
+    public void OuttakeSeting (double Percent) {
+        EH3OUT.setMotorVelocity(OutTPS * Percent);
+        // Outake "Power" to fed in double
+    }
+    public double OuttakeVel () {
+        return EH3OUT.getMotorVelocity();
     }
 }

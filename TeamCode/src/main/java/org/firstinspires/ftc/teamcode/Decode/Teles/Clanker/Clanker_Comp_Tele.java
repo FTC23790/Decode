@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Decode.Teles.Clanker;
 
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.Pose2D;
 import org.firstinspires.ftc.teamcode.Decode.Setup.ImportedStuffs.NO_TOUCH.GoBildaPinpointDriver;
@@ -9,7 +10,6 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.acmerobotics.dashboard.FtcDashboard;
 
-import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.teamcode.Decode.SubSystems.Driving_System;
 import org.firstinspires.ftc.teamcode.Decode.SubSystems.Scoring_System;
 
@@ -58,6 +58,7 @@ public class Clanker_Comp_Tele extends OpMode {
         // x dirention then y dierncton
         odo.resetPosAndIMU();
         // odo cal bits
+        odo.setHeading( -90, AngleUnit.DEGREES);
     }
 
     @Override
@@ -104,9 +105,9 @@ public class Clanker_Comp_Tele extends OpMode {
         } else if (DU1 == true) {
             DS.Drive_Grabber(0, -1, 0, PowerMod, 0);
         } else if (DL1 == true) {
-            DS.Drive_Grabber(-1, 0, 0, PowerMod, 0);
-        } else if (DR1 == true) {
             DS.Drive_Grabber(1, 0, 0, PowerMod, 0);
+        } else if (DR1 == true) {
+            DS.Drive_Grabber(-1, 0, 0, PowerMod, 0);
         } else {
             DS.Drive_Grabber(LX1, LY1, RX1, PowerMod, odo.getHeading(AngleUnit.RADIANS) );
         }
@@ -114,6 +115,7 @@ public class Clanker_Comp_Tele extends OpMode {
         // drive system module
 
         SS.Scoring_Grabber(DU2, DD2);
+        SS.OuttakeSeting(0.67);
         SS.Scoring_Running();
         // Scoring system module
 
@@ -135,6 +137,7 @@ public class Clanker_Comp_Tele extends OpMode {
         telemetry.addData("Odo_Y", YposCurrent);
         telemetry.addData("Odo_R", RposCurrent);
         telemetry.addData("Power", PowerMod );
+        telemetry.addData("OutSpeed", SS.OuttakeVel());
         // odo telemtery
 
         Tele.put("X", XposCurrent);
@@ -144,5 +147,12 @@ public class Clanker_Comp_Tele extends OpMode {
         // FTC Dashboard text test
         //telemetry moduel
 
+    }
+
+    @Override
+    public void stop() {
+        if (SS.OuttakeVel() >> 0) {
+            SS.OuttakeSeting(0);
+        }
     }
 }
