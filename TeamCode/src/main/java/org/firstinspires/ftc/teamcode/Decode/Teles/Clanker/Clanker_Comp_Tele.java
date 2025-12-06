@@ -25,6 +25,7 @@ public class Clanker_Comp_Tele extends OpMode {
     // Intake/outtake object
     TelemetryPacket Tele = new TelemetryPacket();
     FtcDashboard Dash = FtcDashboard.getInstance();
+    int x;
     double LX1;
     double LY1;
     double RX1;
@@ -149,10 +150,16 @@ public class Clanker_Comp_Tele extends OpMode {
 
     }
 
-    @Override
-    public void stop() {
-        if (SS.OuttakeVel() >> 0) {
-            SS.OuttakeSeting(0);
-        }
-    }
+    //@Override
+    //public void stop() {
+        //SS.OuttakeSeting(0.01);
+        //while ((SS.OuttakeVel() > 200) && (x > 1000)) {
+            //SS.OuttakeSeting(0);
+            //x=x+1;
+        //}
+        //SS.OuttakeSeting(0);
+    //if (SS.OuttakeVel() > 200) {
+      //      SS.OuttakeSeting(0);
+        //}
+    //}
 }
