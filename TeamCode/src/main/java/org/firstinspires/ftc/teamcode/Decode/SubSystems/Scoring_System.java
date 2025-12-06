@@ -12,7 +12,7 @@ public class Scoring_System {
     Drive_Motor_Setup EH3OUT = new Drive_Motor_Setup();
     Cont_Servo_Setup EHS5P = new Cont_Servo_Setup();
     Cont_Servo_Setup EHS4MP = new Cont_Servo_Setup();
-    private double OutTPS;
+    public double OutTPS;
     private boolean InTake_Button;
     private boolean OutTake_Button;
     private boolean BigPass;
@@ -51,10 +51,13 @@ public class Scoring_System {
         // Mini Pass Power to full
         CH0IN.setPower(1);
         // Intake Power to full
-        //EH3OUT.setMotorVelocity(OutTPS * (0.67));
-        //EH3OUT.setMotorVelocity(OutTPS * (2/3));
-        // Outake "Power" to two thirds
     }
+    //public void Scoring_Mini_In () {
+        //EHS4MP.setPower(1);
+        // Mini Pass Power to full
+        //CH0IN.setPower(1);
+        // Intake Power to full
+    //}
     public void OuttakeSeting (double Percent) {
         EH3OUT.setMotorVelocity(OutTPS * Percent);
         // Outake "Power" to fed in double

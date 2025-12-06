@@ -117,6 +117,11 @@ public class Clanker_Comp_Tele extends OpMode {
 
         SS.Scoring_Grabber(DU2, DD2);
         SS.OuttakeSeting(0.67);
+        //if (SS.OuttakeVel() > (SS.OutTPS * 0.65)) {
+            //SS.Scoring_Running();
+        //} else {
+            //SS.Scoring_Mini_In();
+        //}
         SS.Scoring_Running();
         // Scoring system module
 
