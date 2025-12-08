@@ -52,12 +52,12 @@ public class Scoring_System {
         CH0IN.setPower(1);
         // Intake Power to full
     }
-    //public void Scoring_Mini_In () {
-        //EHS4MP.setPower(1);
+    public void Scoring_Mini_In () {
+        EHS4MP.setPower(1);
         // Mini Pass Power to full
-        //CH0IN.setPower(1);
+        CH0IN.setPower(1);
         // Intake Power to full
-    //}
+    }
     public void OuttakeSeting (double Percent) {
         EH3OUT.setMotorVelocity(OutTPS * Percent);
         // Outake "Power" to fed in double

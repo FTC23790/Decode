@@ -116,13 +116,12 @@ public class Clanker_Comp_Tele extends OpMode {
         // drive system module
 
         SS.Scoring_Grabber(DU2, DD2);
-        SS.OuttakeSeting(0.67);
-        //if (SS.OuttakeVel() > (SS.OutTPS * 0.65)) {
-            //SS.Scoring_Running();
-        //} else {
-            //SS.Scoring_Mini_In();
-        //}
-        SS.Scoring_Running();
+        SS.OuttakeSeting(0.914);
+        if (SS.OuttakeVel() > (SS.OutTPS * 0.85)) {
+            SS.Scoring_Running();
+        } else {
+            SS.Scoring_Mini_In();
+        }
         // Scoring system module
 
         odo.update();
