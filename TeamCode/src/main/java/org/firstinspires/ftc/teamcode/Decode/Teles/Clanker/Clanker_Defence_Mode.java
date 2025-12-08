@@ -7,24 +7,16 @@ import org.firstinspires.ftc.teamcode.Decode.Setup.ImportedStuffs.NO_TOUCH.GoBil
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
-import com.acmerobotics.dashboard.FtcDashboard;
-
 import org.firstinspires.ftc.teamcode.Decode.SubSystems.Driving_System;
-import org.firstinspires.ftc.teamcode.Decode.SubSystems.Scoring_System;
 
 @TeleOp
-public class Clanker_Comp_Tele extends OpMode {
+public class Clanker_Defence_Mode extends OpMode {
     GoBildaPinpointDriver odo;
     // makes odo object
     double oldTime = 0;
     // odo bit
     Driving_System DS = new Driving_System();
     // drive system object
-    Scoring_System SS = new Scoring_System();
-    // Intake/outtake object
-    TelemetryPacket Tele = new TelemetryPacket();
-    FtcDashboard Dash = FtcDashboard.getInstance();
     double LX1;
     double LY1;
     double RX1;
@@ -32,14 +24,10 @@ public class Clanker_Comp_Tele extends OpMode {
     boolean BR1;
     double PowerMod;
     boolean A1;
-    boolean A2;
-    boolean X2;
     boolean DD1;
     boolean DU1;
     boolean DL1;
     boolean DR1;
-    boolean DD2;
-    boolean DU2;
     double XposCurrent;
     double YposCurrent;
     double RposCurrent;
@@ -47,7 +35,6 @@ public class Clanker_Comp_Tele extends OpMode {
     @Override
     public void init() {
         DS.Drive_MotorCal(hardwareMap);
-        SS.Score_MotorCal(hardwareMap);
         //Initilise HardwareMap setup
 
         odo = hardwareMap.get(GoBildaPinpointDriver.class, "pinpoint");
@@ -78,14 +65,10 @@ public class Clanker_Comp_Tele extends OpMode {
         BL1 = gamepad1.left_bumper;
         BR1 = gamepad1.right_bumper;
         A1 = gamepad1.a;
-        A2 = gamepad2.a;
-        X2 = gamepad2.x;
         DD1 = gamepad1.dpad_down;
         DU1 = gamepad1.dpad_up;
         DL1 = gamepad1.dpad_left;
         DR1 = gamepad1.dpad_right;
-        DD2 = gamepad2.dpad_down;
-        DU2 = gamepad2.dpad_up;
         // gamepad setting
 
         if (BL1 == true) {
@@ -114,15 +97,6 @@ public class Clanker_Comp_Tele extends OpMode {
         DS.Drive_Running();
         // drive system module
 
-        SS.Scoring_Grabber(DU2, DD2);
-        SS.OuttakeSeting(0.914);
-        if (SS.OuttakeVel() > (SS.OutTPS * 0.85)) {
-            SS.Scoring_Running();
-        } else {
-            SS.Scoring_Mini_In();
-        }
-        // Scoring system module
-
         odo.update();
         // self explaitry
 
@@ -141,15 +115,6 @@ public class Clanker_Comp_Tele extends OpMode {
         telemetry.addData("Odo_Y", YposCurrent);
         telemetry.addData("Odo_R", RposCurrent);
         telemetry.addData("Power", PowerMod );
-        telemetry.addData("OutSpeed", SS.OuttakeVel());
-        // odo telemtery
-
-        Tele.put("X", XposCurrent);
-        Tele.put("Y", YposCurrent);
-        Tele.put("R", RposCurrent);
-        Dash.sendTelemetryPacket(Tele);
-        // FTC Dashboard text test
-        //telemetry moduel
 
     }
 }
