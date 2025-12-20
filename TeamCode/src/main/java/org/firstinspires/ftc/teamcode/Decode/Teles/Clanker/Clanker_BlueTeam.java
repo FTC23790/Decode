@@ -24,7 +24,7 @@ import org.firstinspires.ftc.teamcode.Decode.SubSystems.Scoring_System;
 
 import java.util.List;
 
-@TeleOp
+@Disabled
 public class Clanker_BlueTeam extends OpMode {
     Limelight3A limelight;
     GoBildaPinpointDriver odo;
