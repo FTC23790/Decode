@@ -6,6 +6,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.Pose2D;
 import org.firstinspires.ftc.teamcode.Decode.Setup.ImportedStuffs.NO_TOUCH.GoBildaPinpointDriver;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.acmerobotics.dashboard.FtcDashboard;
@@ -13,7 +14,7 @@ import com.acmerobotics.dashboard.FtcDashboard;
 import org.firstinspires.ftc.teamcode.Decode.SubSystems.Driving_System;
 import org.firstinspires.ftc.teamcode.Decode.SubSystems.Scoring_System;
 
-@TeleOp
+@Disabled
 public class Clanker_Comp_Tele extends OpMode {
     GoBildaPinpointDriver odo;
     // makes odo object
@@ -67,7 +68,7 @@ public class Clanker_Comp_Tele extends OpMode {
         Pose2D pos = odo.getPosition();
         XposCurrent = pos.getY(DistanceUnit.INCH);
         YposCurrent = pos.getX(DistanceUnit.INCH);
-        RposCurrent = pos.getHeading(AngleUnit.DEGREES);
+        RposCurrent = pos.getHeading(AngleUnit.RADIANS);
         //feeding the odo positions into code varibles
         // it calls strafe Y and X is frward backard, so calling Y X and X Y
         // to use X as horoziontal strafe and Y forward Backward
@@ -109,7 +110,7 @@ public class Clanker_Comp_Tele extends OpMode {
         } else if (DR1 == true) {
             DS.Drive_Grabber(-1, 0, 0, PowerMod, 0);
         } else {
-            DS.Drive_Grabber(LX1, LY1, RX1, PowerMod, odo.getHeading(AngleUnit.RADIANS) );
+            DS.Drive_Grabber(LX1, LY1, RX1, PowerMod, RposCurrent );
         }
         DS.Drive_Running();
         // drive system module
@@ -139,7 +140,7 @@ public class Clanker_Comp_Tele extends OpMode {
         telemetry.addLine();
         telemetry.addData("Odo_X", XposCurrent);
         telemetry.addData("Odo_Y", YposCurrent);
-        telemetry.addData("Odo_R", RposCurrent);
+        telemetry.addData("Odo_R", ((RposCurrent / (2 * Math.PI)) * 360));
         telemetry.addData("Power", PowerMod );
         telemetry.addData("OutSpeed", SS.OuttakeVel());
         // odo telemtery

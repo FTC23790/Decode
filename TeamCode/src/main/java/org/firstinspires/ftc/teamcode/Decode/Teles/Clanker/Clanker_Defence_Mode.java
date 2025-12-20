@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Decode.SubSystems.Driving_System;
+import java.lang.Math;
 
 @TeleOp
 public class Clanker_Defence_Mode extends OpMode {
@@ -54,7 +55,7 @@ public class Clanker_Defence_Mode extends OpMode {
         Pose2D pos = odo.getPosition();
         XposCurrent = pos.getY(DistanceUnit.INCH);
         YposCurrent = pos.getX(DistanceUnit.INCH);
-        RposCurrent = pos.getHeading(AngleUnit.DEGREES);
+        RposCurrent = pos.getHeading(AngleUnit.RADIANS);
         //feeding the odo positions into code varibles
         // it calls strafe Y and X is frward backard, so calling Y X and X Y
         // to use X as horoziontal strafe and Y forward Backward
@@ -92,7 +93,7 @@ public class Clanker_Defence_Mode extends OpMode {
         } else if (DR1 == true) {
             DS.Drive_Grabber(-1, 0, 0, PowerMod, 0);
         } else {
-            DS.Drive_Grabber(LX1, LY1, RX1, PowerMod, odo.getHeading(AngleUnit.RADIANS) );
+            DS.Drive_Grabber(LX1, LY1, RX1, PowerMod, RposCurrent);
         }
         DS.Drive_Running();
         // drive system module
@@ -113,7 +114,7 @@ public class Clanker_Defence_Mode extends OpMode {
         telemetry.addLine();
         telemetry.addData("Odo_X", XposCurrent);
         telemetry.addData("Odo_Y", YposCurrent);
-        telemetry.addData("Odo_R", RposCurrent);
+        telemetry.addData("Odo_R", ((RposCurrent / (2 * Math.PI)) * 360));
         telemetry.addData("Power", PowerMod );
 
     }
